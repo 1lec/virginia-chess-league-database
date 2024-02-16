@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CS 340 Step 3 Draft Games</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <header>
+        <h1>Games</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="players.html">Players</a>
+        <a href="seasons.html">Seasons</a>
+        <a href="games.html">Games</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Record New Game</h2>
+            <form action="/createGame" method="POST">
+                <fieldset>
+                    <label for="whiteID"> White Pieces </label>
+                        <input type="number"
+                        id="whiteID"
+                        name="whiteID"
+                        required />
+                    <label for="blackID"> Black Pieces </label>
+                        <input type="number"
+                        id="blackID"
+                        name="blackID"
+                        required />
+                    <label for="gameDate"> Game Date </label>
+                        <input type="date"
+                        id="gameDate"
+                        name="gameDate"
+                        required />
+                    <label for="seasonID"> Season </label>
+                        <input type="number"
+                        id="seasonID"
+                        name="seasonID"
+                        required />
+                    <label for="resultID"> Game Result </label>
+                        <select name="resultID" id="resultID" required>
+                            <option value="1"> White Player Win </option>
+                            <option value="0"> Black Player Win </option>
+                            <option value="2"> Draw </option>
+                        </select>
+                </fieldset>
+            </form>
+            <h2>Update Game</h2>
+            <h2>Delete Game</h2>
+            <form action="/deleteGame" method="POST">
+                <fieldset>
+                    <label for="gameID"> Please enter the ID number of the game you wish to delete.
+                        <input type="number"
+                        id="gameID"
+                        name="gameID"
+                        required/>
+                    </label>
+                    <button type="submit"> Delete Game </button>
+                </fieldset>
+        </section>
+    </main>
+</body>
+</html>

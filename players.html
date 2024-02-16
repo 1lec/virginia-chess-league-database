@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CS 340 Step 3 Draft Players</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <header>
+        <h1>Virginia Chess League Players</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="players.html">Players</a>
+        <a href="seasons.html">Seasons</a>
+        <a href="games.html">Games</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Add New Player</h2>
+            <form action="/createPlayer" method="POST">
+                <fieldset>
+                    <label for="firstName"> First Name
+                        <input type="text"
+                        name="firstName"
+                        id="firstName"
+                        size="30"
+                        maxlength="120"
+                        required
+                        placeholder="John"/>
+                    </label>
+                    <label for="lastName"> Last Name
+                        <input type="text"
+                        name="lastName"
+                        id="lastName"
+                        size="30"
+                        maxlength="120"
+                        required
+                        placeholder="Wick"/>
+                    </label>
+                    <label for="rating"> Rating
+                        <input type="text"
+                        name="rating"
+                        id="rating"
+                        size="10"
+                        maxlength="5"/>
+                    </label>
+                    <label for="birthday"> Birthday
+                        <input type="date"
+                        id="birthday"
+                        name="birthday"/>
+                    </label>
+                    <label for="country"> Country
+                        <input type="text"
+                        id="country"
+                        name="country"/>
+                    </label>
+                    <button type="submit"> Add Player </button>
+                </fieldset>
+            </form>
+            <h2>Update Existing Player</h2>
+            <form action="/updatePlayer" method="POST">
+                <fieldset>
+                    <label for="playerID"> Player ID number
+                        <input type="number"
+                        id="playerID"
+                        name="playerID"
+                        required/>
+                    </label>
+                    <label for="firstName"> First Name
+                        <input type="text"
+                        name="firstName"
+                        id="firstName"
+                        size="30"
+                        maxlength="120"
+                        placeholder="John"/>
+                    </label>
+                    <label for="lastName"> Last Name
+                        <input type="text"
+                        name="lastName"
+                        id="lastName"
+                        size="30"
+                        maxlength="120"
+                        placeholder="Wick"/>
+                    </label>
+                    <label for="rating"> Rating
+                        <input type="text"
+                        name="rating"
+                        id="rating"
+                        size="10"
+                        maxlength="5"/>
+                    </label>
+                    <label for="birthday"> Birthday
+                        <input type="date"
+                        id="birthday"
+                        name="birthday"/>
+                    </label>
+                    <label for="country"> Country
+                        <input type="text"
+                        id="country"
+                        name="country"/>
+                    </label>
+                    <button type="submit"> Update Player </button>
+                </fieldset>
+            </form>
+            <h2>Delete Player</h2>
+            <form action="/deletePlayer" method="POST">
+                <fieldset>
+                    <label for="playerID"> Please enter the ID number of the player you wish to delete.
+                        <input type="number"
+                        id="playerID"
+                        name="playerID"
+                        required/>
+                    </label>
+                    <button type="submit"> Delete Player </button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CS 340 Step 3 Draft Seasons</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <header>
+        <h1>Virginia Chess League Seasons</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="players.html">Players</a>
+        <a href="seasons.html">Seasons</a>
+        <a href="games.html">Games</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Record New Season</h2>
+
+            <h2>Update Season</h2>
+            <h2>Delete Season</h2>
+            <form action="/deleteSeason" method="POST">
+                <fieldset>
+                    <label for="seasonID"> Please enter the ID number of the season you wish to delete.
+                        <input type="number"
+                        id="seasonID"
+                        name="seasonID"
+                        required/>
+                    </label>
+                    <button type="submit"> Delete Season </button>
+                </fieldset>
+        </section>
+    </main>
+</body>
+</html>
