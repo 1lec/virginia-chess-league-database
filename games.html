@@ -82,16 +82,23 @@
             <h2>Record New Game</h2>
             <form action="/createGame" method="POST">
                 <fieldset>
-                    <label for="whiteID"> White Pieces </label>
+                    <label for="whiteID"> White </label>
                         <input type="number"
                         id="whiteID"
                         name="whiteID"
                         required />
-                    <label for="blackID"> Black Pieces </label>
+                    <br>
+                    <label for="blackID"> Black  </label>
                         <input type="number"
                         id="blackID"
                         name="blackID"
                         required />
+                    <br>
+                    <label for="opening"> Opening </label>
+                        <input type="text"
+                        id="opening"
+                        name="opening" />
+                    <br>
                     <label for="gameDate"> Game Date </label>
                         <input type="date"
                         id="gameDate"
@@ -102,15 +109,83 @@
                         id="seasonID"
                         name="seasonID"
                         required />
-                    <label for="resultID"> Game Result </label>
+                    <label for="location"> Location </label>
+                        <input type="number"
+                        id="location"
+                        name="location"
+                        required />
+                    <br>
+                    <label for="resultID"> Result </label>
                         <select name="resultID" id="resultID" required>
-                            <option value="1"> White Player Win </option>
-                            <option value="0"> Black Player Win </option>
-                            <option value="2"> Draw </option>
+                            <option value="1"> 1-0 </option>
+                            <option value="0"> 0-1 </option>
+                            <option value="2"> 1/2-1/2</option>
                         </select>
                 </fieldset>
             </form>
             <h2>Update Game</h2>
+            <form action="/createGame" method="POST">
+                <fieldset>
+                    <label>gameID: </label>
+                        1
+                    <br>
+                    <label for="whiteID"> White </label>
+                        <input type="number"
+                        id="whiteID"
+                        name="whiteID"
+                        value="1"
+                        required />
+                    <label for="whiteRating"> Rating </label>
+                        <input type="number"
+                        id="whiteRating"
+                        name="whiteRating"
+                        value="NULL" />
+                    <br>
+                    <label for="blackID"> Black  </label>
+                        <input type="number"
+                        id="blackID"
+                        name="blackID"
+                        value="3"
+                        required />
+                    <label for="blackRating"> Rating </label>
+                        <input type="number"
+                        id="blackRating"
+                        name="blackRating"
+                        value="NULL" />
+                    <br>
+                    <label for="opening"> Opening </label>
+                        <input type="text"
+                        id="opening"
+                        name="opening"
+                        value="NULL" />
+                    <br>
+                    <label for="gameDate"> Game Date </label>
+                        <input type="date"
+                        id="gameDate"
+                        name="gameDate"
+                        value="2023-07-20"
+                        required />
+                    <label for="seasonID"> Season </label>
+                        <input type="number"
+                        id="seasonID"
+                        name="seasonID"
+                        value="1"
+                        required />
+                    <label for="location"> Location </label>
+                        <input type="number"
+                        id="location"
+                        name="location"
+                        value="NULL"
+                        required />
+                    <br>
+                    <label for="resultID"> Result </label>
+                        <select name="resultID" id="resultID" required>
+                            <option value="1"> 1-0 </option>
+                            <option value="0" selected> 0-1 </option>
+                            <option value="2"> 1/2-1/2</option>
+                        </select>
+                </fieldset>
+            </form>
             <h2>Delete Game</h2>
             <form action="/deleteGame" method="POST">
                 <fieldset>
