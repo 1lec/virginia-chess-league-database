@@ -73,8 +73,9 @@
                         size="30"
                         maxlength="120"
                         required
-                        placeholder="John"/>
+                        placeholder="Garry"/>
                     </label>
+                    <br>
                     <label for="lastName"> Last Name
                         <input type="text"
                         name="lastName"
@@ -82,8 +83,9 @@
                         size="30"
                         maxlength="120"
                         required
-                        placeholder="Wick"/>
+                        placeholder="Kasparov"/>
                     </label>
+                    <br>
                     <label for="rating"> Rating
                         <input type="text"
                         name="rating"
@@ -91,61 +93,66 @@
                         size="10"
                         maxlength="5"/>
                     </label>
+                    <br>
                     <label for="birthday"> Birthday
                         <input type="date"
                         id="birthday"
                         name="birthday"/>
                     </label>
+                    <br>
                     <label for="country"> Country
                         <input type="text"
                         id="country"
                         name="country"/>
                     </label>
+                    <br>
                     <button type="submit"> Add Player </button>
                 </fieldset>
             </form>
             <h2>Update Existing Player</h2>
             <form action="/updatePlayer" method="POST">
                 <fieldset>
-                    <label for="playerID"> Player ID number
-                        <input type="number"
-                        id="playerID"
-                        name="playerID"
-                        required/>
-                    </label>
+                    <label for="playerID"> playerID: </label>
+                    1
+                    <br>
                     <label for="firstName"> First Name
                         <input type="text"
                         name="firstName"
                         id="firstName"
                         size="30"
                         maxlength="120"
-                        placeholder="John"/>
+                        value="Luann" />
                     </label>
+                    <br>
                     <label for="lastName"> Last Name
                         <input type="text"
                         name="lastName"
                         id="lastName"
                         size="30"
                         maxlength="120"
-                        placeholder="Wick"/>
+                        value="Pascucci"/>
                     </label>
+                    <br>
                     <label for="rating"> Rating
-                        <input type="text"
+                        <input type="number"
                         name="rating"
                         id="rating"
                         size="10"
                         maxlength="5"/>
                     </label>
+                    <br>
                     <label for="birthday"> Birthday
                         <input type="date"
                         id="birthday"
                         name="birthday"/>
                     </label>
+                    <br>
                     <label for="country"> Country
                         <input type="text"
                         id="country"
                         name="country"/>
                     </label>
+                    <br>
                     <button type="submit"> Update Player </button>
                 </fieldset>
             </form>
