@@ -48,8 +48,29 @@
                 </tbody>
             </table>
             <h2>Record New Season</h2>
-
+            <form action="/createGame" method="POST">
+                <fieldset>
+                    <label for="name"> Name </label>
+                        <input type="text"
+                        id="name"
+                        name="name"
+                        required />
+                </fieldset>
+            </form>
             <h2>Update Season</h2>
+            <form action="/createGame" method="POST">
+                <fieldset>
+                    <label>seasonID: </label>
+                    1
+                    <br>
+                    <label for="name"> Name </label>
+                        <input type="text"
+                        id="name"
+                        name="name"
+                        value="Summer 2023"
+                        required />
+                </fieldset>
+            </form>
             <h2>Delete Season</h2>
             <form action="/deleteSeason" method="POST">
                 <fieldset>
