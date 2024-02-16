@@ -92,7 +92,7 @@ VALUES ('1', '1-0'),
 
 -- Games
 
-INSERT INTO Games (white, whiteRating, black, blackRating, opening, season, result, gameDate, location)
+INSERT INTO Games (whiteID, whiteRating, blackID, blackRating, ecoCode, seasonID, resultID, gameDate, location)
 VALUES (
     1,
     NULL,
