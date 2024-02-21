@@ -22,7 +22,7 @@
             <table>
                 <thead>
                     <th>ecoCode</th>
-                    <th>firstName</th>
+                    <th>varName</th>
                 </thead>
                 <tbody>
                     <tr>
@@ -43,6 +43,30 @@
                     </tr>
                 </tbody>
             </table>
+            <h2>Add New Opening</h2>
+            <form action="/createOpening" method="POST">
+                <fieldset>
+                    <label for="ecoCode"> ECO Code
+                        <input type="text"
+                        name="ecoCode"
+                        id="ecoCode"
+                        size="30"
+                        maxlength="3"
+                        required/>
+                    </label>
+                    <br>
+                    <label for="varName"> Variation Name
+                        <input type="text"
+                        name="varName"
+                        id="varName"
+                        size="30"
+                        maxlength="120"
+                        required/>
+                    </label>
+                    <br>
+                    <button type="submit"> Add Opening </button>
+                </fieldset>
+            </form>
         </section>
     </main>
 </body>
