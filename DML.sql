@@ -1,36 +1,79 @@
 -- CS 340
--- Project Step 3 Draft
+-- Project Step 3 Final
 -- Luann Pascucci, Alec Andersen
 
 -- ! character will indicate form input
 
--- Player operations
+
+-- -----------------------------------------------------------------
+-- Players
+-- -----------------------------------------------------------------
+
+-- browse players
+SELECT firstName AS "First Name", lastName AS "Last Name", rating AS Rating, birthday AS Birthday, country AS Country
+FROM Players
 
 -- create new player
 INSERT INTO Players (firstName, lastName, rating, birthday, country)
 VALUES (!firstName, !lastName, !rating, !birthday, !country);
 
 -- update player information
-UPDATE Players SET firstName = !firstName, lastName = !lastName, rating = !rating, birthday = !birthday, country = !country WHERE playerID = !playerID;
+UPDATE Players SET firstName = !firstName, lastName = !lastName, rating = !rating, birthday = !birthday, country = !country
+WHERE playerID = !playerID;
 
 -- delete player
 DELETE FROM Players WHERE playerID = !playerID;
 
 
--- Season operations
+-- -----------------------------------------------------------------
+-- Seasons
+-- -----------------------------------------------------------------
+
+-- browse seasons
+SELECT name AS name
+FROM Seasons
 
 -- create new season
 INSERT INTO Seasons (name)
 VALUES (!name);
 
 -- update/edit a season
-UPDATE Seasons SET name = !name WHERE seasonID = !seasonID;
+UPDATE Seasons SET name = !name
+WHERE seasonID = !seasonID;
 
 -- delete a season
-DELETE FROM Seasons WHERE seasonID = !seasonID;
+DELETE FROM Seasons
+WHERE seasonID = !seasonID;
 
 
--- Game operations
+-- -----------------------------------------------------------------
+-- Openings
+-- -----------------------------------------------------------------
+
+-- browse openings
+SELECT ecoCode AS "ECO Code", varName AS Variation
+FROM Openings
+
+-- create new opening
+INSERT INTO Openings (varName)
+VALUES (!varName);
+
+
+-- -----------------------------------------------------------------
+-- Openings
+-- -----------------------------------------------------------------
+
+-- browse results
+SELECT resultID, description AS description
+FROM Results
+
+
+-- -----------------------------------------------------------------
+-- Games
+-- -----------------------------------------------------------------
+
+-- browse games
+SELECT gameID, whiteID AS White, whiteRating AS 
 
 -- Record new game (create new transaction)
 INSERT INTO Games (whiteID, blackID, ecoCode, seasonID, resultID, gameDate, location)
@@ -42,10 +85,8 @@ ecoCode = !ecoCode, seasonID = !seasonID, gameDate = !gameDate, location = !loca
 WHERE gameID = !gameID;
 
 -- delete a game (many-to-many relationship deletion)
-DELETE FROM Games WHERE gameID = !gameID;
-
--- For Openings and Results, we do not need functionality for any user to add, update, or delete. 
--- We plan to populate these ourselves and leave them to be selected from when recording a new game.
+DELETE FROM Games
+WHERE gameID = !gameID;
 
 
 /* List of different SELECTIONs
@@ -70,20 +111,8 @@ Count/list all seasons a player has participated in (Players, Games, Seasons)
 
 --Sample selections
 
---Show all players
-SELECT * FROM Players;
-
---Show all seasons
-SELECT * FROM Seasons;
-
 --Show all games
 SELECT * FROM Games;
-
---Show all openings
-SELECT * FROM Openings;
-
---Show all results
-SELECT * FROM Results;
 
 --Count how many games were played in each season (Games, Seasons)
 SELECT Count(*) FROM Games WHERE seasonID = !seasonID;
