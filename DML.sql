@@ -11,7 +11,11 @@
 
 -- browse players
 SELECT firstName AS "First Name", lastName AS "Last Name", rating AS Rating, birthday AS Birthday, country AS Country
+FROM Players;
+
+SELECT playerID, CONCAT(Player.lastNames, ', ', Players.firstName) AS Name
 FROM Players
+WHERE Name = !player_name_typed_into_games_form
 
 -- create new player
 INSERT INTO Players (firstName, lastName, rating, birthday, country)
@@ -31,7 +35,11 @@ DELETE FROM Players WHERE playerID = !playerID;
 
 -- browse seasons
 SELECT name AS name
-FROM Seasons
+FROM Seasons;
+
+-- get seasonIDs and names for Season dropdown
+SELECT seasonID, name
+FROM Seasons;
 
 -- create new season
 INSERT INTO Seasons (name)
@@ -52,7 +60,11 @@ WHERE seasonID = !seasonID;
 
 -- browse openings
 SELECT ecoCode AS "ECO Code", varName AS Variation
-FROM Openings
+FROM Openings;
+
+-- get ecoCodes and varNames for Opening dropdown
+SELECT ecoCode, varName
+FROM Openings;
 
 -- create new opening
 INSERT INTO Openings (varName)
@@ -65,11 +77,11 @@ VALUES (!varName);
 
 -- browse results
 SELECT resultID, description AS description
-FROM Results
+FROM Results;
 
 -- get resultIDs and descriptions for Result dropdown
 SELECT resultID, description
-FROM Results
+FROM Results;
 
 -- -----------------------------------------------------------------
 -- Games
