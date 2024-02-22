@@ -34,7 +34,7 @@ DELETE FROM Players WHERE playerID = !playerID;
 -- -----------------------------------------------------------------
 
 -- browse seasons
-SELECT name AS name
+SELECT seasonID, name AS Name
 FROM Seasons;
 
 -- get seasonIDs and names for Season dropdown
