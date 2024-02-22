@@ -127,9 +127,6 @@ Count/list all seasons a player has participated in (Players, Games, Seasons)
 
 --Sample selections
 
---Show all games
-SELECT * FROM Games;
-
 --Count how many games were played in each season (Games, Seasons)
 SELECT Count(*) FROM Games WHERE seasonID = !seasonID;
 -- Count how many games were played in all seasons (Games, Seasons)
