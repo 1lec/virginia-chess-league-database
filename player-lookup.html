@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CS 340 Step 3 Draft Home</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <header>
+        <h1>Virginia Chess League Home Page</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="players.html">Players</a>
+        <a href="seasons.html">Seasons</a>
+        <a href="games.html">Games</a>
+        <a href="results.html">Results</a>
+        <a href="openings.html">Openings</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Player Lookup</h2>
+            <p>
+                <form action="/playerLookup" method="POST">
+                    <fieldset>
+                        <label for="nameLookup"> Please enter the first and last name of the player. </label>
+                        <input type="text"
+                        id="nameLookup"
+                        name="nameLookup"
+                        required 
+                        placeholder="John Wick"/>
+                    </fieldset>
+                </form>
+            </p>
+        </section>
+    </main>
+</body>
+</html>
