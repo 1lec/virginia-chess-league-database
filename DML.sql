@@ -73,7 +73,23 @@ FROM Results
 -- -----------------------------------------------------------------
 
 -- browse games
-SELECT gameID, whiteID AS White, whiteRating AS 
+SELECT Games.gameID,
+    CONCAT(WhitePlayer.lastName, ', ', WhitePlayer.firstName) AS White,
+    Games.whiteRating AS 'White Rating',
+    CONCAT(BlackPlayer.lastName, ', ', BlackPlayer.firstName) AS Black,
+    Games.blackRating AS 'Black Rating',
+    Results.description AS Result,
+    Openings.varName AS Opening,
+    Seasons.name AS Season,
+    Games.gameDate AS Date,
+    Games.location AS Location
+FROM Games
+INNER JOIN Players AS WhitePlayer ON Games.whiteID = WhitePlayer.playerID
+INNER JOIN Players AS BlackPlayer ON Games.blackID = BlackPlayer.playerID
+LEFT JOIN Openings ON Games.ecoCode = Openings.ecoCode
+INNER JOIN Seasons ON Games.seasonID = Seasons.seasonID
+INNER JOIN Results ON Games.resultID = Results.resultID
+;
 
 -- Record new game (create new transaction)
 INSERT INTO Games (whiteID, blackID, ecoCode, seasonID, resultID, gameDate, location)
