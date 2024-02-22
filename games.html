@@ -95,9 +95,13 @@
                         required />
                     <br>
                     <label for="opening"> Opening </label>
-                        <input type="text"
-                        id="opening"
-                        name="opening" />
+                    <select name="ecoCode" id="ecoCode">
+                        <option value="1"> NULL </option>
+                        <option value="B15"> Caro-Kann </option>
+                        <option value="B18"> Caro-Kann, Classical </option>
+                        <option value="B27"> Sicilian </option>
+                        <option value="B30"> Sicilian </option>
+                    </select>
                     <br>
                     <label for="gameDate"> Game Date </label>
                         <input type="date"
@@ -105,10 +109,11 @@
                         name="gameDate"
                         required />
                     <label for="seasonID"> Season </label>
-                        <input type="number"
-                        id="seasonID"
-                        name="seasonID"
-                        required />
+                        <select name="seasonID" id="seasonID" required>
+                            <option value="1"> Summer 2023 </option>
+                            <option value="2"> Fall 2023 </option>
+                            <option value="3"> Winter 2023 </option>
+                        </select>
                     <label for="location"> Location </label>
                         <input type="number"
                         id="location"
@@ -131,11 +136,11 @@
                     <label>gameID: </label>
                         1
                     <br>
-                    <label for="whiteID"> White </label>
-                        <input type="number"
-                        id="whiteID"
-                        name="whiteID"
-                        value="1"
+                    <label for="white"> White </label>
+                        <input type="text"
+                        id="white"
+                        name="white"
+                        value="Pascucci, Luann"
                         required />
                     <label for="whiteRating"> Rating </label>
                         <input type="number"
@@ -143,11 +148,11 @@
                         name="whiteRating"
                         value="NULL" />
                     <br>
-                    <label for="blackID"> Black  </label>
-                        <input type="number"
-                        id="blackID"
-                        name="blackID"
-                        value="3"
+                    <label for="black"> Black  </label>
+                        <input type="text"
+                        id="black"
+                        name="black"
+                        value="Monster, Cookie"
                         required />
                     <label for="blackRating"> Rating </label>
                         <input type="number"
@@ -156,10 +161,13 @@
                         value="NULL" />
                     <br>
                     <label for="opening"> Opening </label>
-                        <input type="text"
-                        id="opening"
-                        name="opening"
-                        value="NULL" />
+                        <select name="ecoCode" id="ecoCode">
+                            <option value="1"> NULL </option>
+                            <option value="B15"> Caro-Kann </option>
+                            <option value="B18"> Caro-Kann, Classical </option>
+                            <option value="B27"> Sicilian </option>
+                            <option value="B30"> Sicilian </option>
+                        </select>
                     <br>
                     <label for="gameDate"> Game Date </label>
                         <input type="date"
@@ -168,11 +176,11 @@
                         value="2023-07-20"
                         required />
                     <label for="seasonID"> Season </label>
-                        <input type="number"
-                        id="seasonID"
-                        name="seasonID"
-                        value="1"
-                        required />
+                        <select name="seasonID" id="seasonID" required>
+                            <option value="1" selected> Summer 2023 </option>
+                            <option value="2"> Fall 2023 </option>
+                            <option value="3"> Winter 2023 </option>
+                        </select>
                     <label for="location"> Location </label>
                         <input type="number"
                         id="location"
