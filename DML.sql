@@ -60,13 +60,16 @@ VALUES (!varName);
 
 
 -- -----------------------------------------------------------------
--- Openings
+-- Results
 -- -----------------------------------------------------------------
 
 -- browse results
 SELECT resultID, description AS description
 FROM Results
 
+-- get resultIDs and descriptions for Result dropdown
+SELECT resultID, description
+FROM Results
 
 -- -----------------------------------------------------------------
 -- Games
