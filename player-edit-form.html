@@ -6,7 +6,7 @@
 </head>
 <body>
     <header>
-        <h1>Players</h1>
+        <h1>Player Update Form</h1>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -17,53 +17,60 @@
         <a href="openings.html">Openings</a>
     </nav>
 <main>
-<h2>Update Existing Player</h2>
-<form action="/updatePlayer" method="POST">
-    <fieldset>
-        <label for="playerID"> playerID: </label>
-        1
-        <br>
-        <label for="firstName"> First Name
-            <input type="text"
-            name="firstName"
-            id="firstName"
-            size="30"
-            maxlength="120"
-            value="Luann" />
-        </label>
-        <br>
-        <label for="lastName"> Last Name
-            <input type="text"
-            name="lastName"
-            id="lastName"
-            size="30"
-            maxlength="120"
-            value="Pascucci"/>
-        </label>
-        <br>
-        <label for="rating"> Rating
-            <input type="number"
-            name="rating"
-            id="rating"
-            size="10"
-            maxlength="5"/>
-        </label>
-        <br>
-        <label for="birthday"> Birthday
-            <input type="date"
-            id="birthday"
-            name="birthday"/>
-        </label>
-        <br>
-        <label for="country"> Country
-            <input type="text"
-            id="country"
-            name="country"/>
-        </label>
-        <br>
-        <button type="submit"> Update Player </button>
-    </fieldset>
-</form>
+    <h2>Player Information</h2>
+    <h2>Update Existing Player</h2>
+    <form action="/updatePlayer" method="POST">
+        <fieldset>
+            <label for="playerID"> playerID: </label>
+            1
+            <br>
+            <label for="firstName"> First Name
+                <input type="text"
+                name="firstName"
+                id="firstName"
+                size="30"
+                maxlength="120"
+                value=""/>
+            </label>
+            <br>
+            <label for="lastName"> Last Name
+                <input type="text"
+                name="lastName"
+                id="lastName"
+                size="30"
+                maxlength="120"
+                value=""/>
+            </label>
+            <br>
+            <label for="rating"> Rating
+                <input type="number"
+                name="rating"
+                id="rating"
+                size="10"
+                maxlength="5"
+                value=""/>
+            </label>
+            <br>
+            <label for="birthday"> Birthday
+                <input type="date"
+                id="birthday"
+                name="birthday"
+                value=""/>
+            </label>
+            <br>
+            <label for="country"> Country
+                <input type="text"
+                id="country"
+                name="country"
+                value=""/>
+            </label>
+            <br>
+            <button type="submit"> Update Player </button>
+        </fieldset>
+    </form>
 </main>
+<footer>
+    <p>© 2024 Alec Andersen and Luann Pascucci</p>
+</footer>
 </body>
 
