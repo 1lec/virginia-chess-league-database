@@ -7,7 +7,7 @@
 {{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data --}}
 
 {{!-- Create a table --}}
-<table>
+<table id="players-table">
     {{!-- Table Header section--}}
     <thead>
         {{!-- make first row of table the column names --}}
@@ -22,7 +22,7 @@
 
     {{!-- Table body section --}}
     <tbody>
-        {{!-- print playerID, firstName, lastName, rating, birthday, and country --}}
+        {{!-- for each row, print playerID, firstName, lastName, rating, birthday, and country --}}
         {{#each data}}
         <tr>
             <td>{{this.playerID}}</td>
@@ -35,3 +35,29 @@
         {{/each}}
     </tbody>
 </table>
+
+{{!-- Form to add a record to the table --}}
+<h2>Adding Data with AJAX</h2>
+<p>To add a new person, please enter their information below and click 'Submit'</p>
+<form id="createPlayer-form-ajax">
+    <label for="input-firstName">First Name:</label>
+    <input type="text" name="input-firstName" id="input-firstName">
+
+    <label for="input-lastName">Last Name:</label>
+    <input type="text" name="input-lastName" id="input-lastName">
+
+    <label for="input-rating">Rating:</label>
+    <input type="text" name="input-rating" id="input-rating">
+
+    <label for="input-birthday">Birthday:</label>
+    <input type="date" name="input-birthday" id="input-birthday">
+
+    <label for="input-country">Country:</label>
+    <input type="text" name="input-country" id="input-country">
+
+    <input type="submit">
+</form>
+
+{{!-- the below line embeds javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_player.js"></script>
+
