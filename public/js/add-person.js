@@ -46,3 +46,42 @@ addPlayerForm.addEventListener("submit", function (e) {
 
   xhttp.send(JSON.stringify(data));
 });
+
+// creates a row from an object; representing one record from Players table
+
+addRowToTable = (data) => {
+  let currentTable = document.getElementById("players-table");
+
+  let newRowIndex = currentTable.rows.length;
+
+  let parsedData = JSON.parse(data);
+  let newRow = parsedData[parsedData.length - 1];
+
+  //create a row
+  let row = document.createElement("TR");
+  let playerIDCell = document.createElement("TD");
+  let firstNameCell = document.createElement("TD");
+  let lastNameCell = document.createElement("TD");
+  let ratingCell = document.createElement("TD");
+  let birthdayCell = document.createElement("TD");
+  let countryCell = document.createElement("TD");
+
+  // fill the row's cells with the data
+  playerIDCell.innerText = newRow.id;
+  firstNameCell.innerText = newRow.firstName;
+  lastNameCell.innerText = newRow.lastName;
+  ratingCell.innerText = newRow.rating;
+  birthdayCell.innerText = newRow.birthday;
+  countryCell.innerText = newRow.country;
+
+  //append the cells to the row
+  row.appendChild(playerIDCell);
+  row.appendChild(firstNameCell);
+  row.appendChild(lastNameCell);
+  row.appendChild(ratingCell);
+  row.appendChild(birthdayCell);
+  row.appendChild(countryCell);
+
+  //add the row to the table
+  currentTable.appendChild(row);
+};
