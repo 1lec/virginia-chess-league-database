@@ -37,7 +37,7 @@ app.get("/", function (req, res) {
 
 //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
 
-app.post("/add-player-ajax", function (req, res) {
+app.post("/createPlayer-ajax", function (req, res) {
   let data = req.body;
   //capture NULL values; I think it only needs this for numbers?
   let rating = parseInt(data.rating);
