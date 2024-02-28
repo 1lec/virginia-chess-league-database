@@ -37,15 +37,32 @@ app.get("/", function (req, res) {
 
 //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
 
-app.post('/add-player-ajax', function(req, res){
+app.post("/add-player-ajax", function (req, res) {
   let data = req.body;
-  //capture NULL values
+  //capture NULL values; I think it only needs this for numbers?
   let rating = parseInt(data.rating);
-  if (isNaN(rating)){
-    rating = 'NULL'
+  if (isNaN(rating)) {
+    rating = "NULL";
   }
-  
-})
+
+  query1 = `INSERT INTO Players (firstName, lastName, rating, birthday, country VALUES ('${data.firstName}', '${data.lastName}', ${rating}, ${birthday}, '${data.country}')`;
+  db.pool.query(query1, function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      query2 = `SELECT * FROM Players;`;
+      db.pool.query(query2, function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.send(rows);
+        }
+      });
+    }
+  });
+});
 
 /*
     LISTENER
