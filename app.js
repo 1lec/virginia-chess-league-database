@@ -24,7 +24,11 @@ app.set("view engine", ".hbs");
 //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%203%20-%20Integrating%20a%20Templating%20Engine%20(Handlebars)
 
 app.get("/", function (req, res) {
-  res.render("index");
+  //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+  let query1 = "SELECT * FROM Players;";
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("index");
+  });
 });
 
 /*
