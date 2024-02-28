@@ -27,7 +27,7 @@ app.get("/", function (req, res) {
   //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
   let query1 = "SELECT * FROM Players;";
   db.pool.query(query1, function (error, rows, fields) {
-    res.render("index");
+    res.render("index", { data: rows });
   });
 });
 
