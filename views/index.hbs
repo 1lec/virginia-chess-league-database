@@ -3,3 +3,35 @@
 <!-- index.hbs -->
 <h1>The server is running!</h1>
 <p>If you see this text, the server is <strong>definitely</strong> working!</p>
+
+{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data --}}
+
+{{!-- Create a table --}}
+<table>
+    {{!-- Table Header section--}}
+    <thead>
+        {{!-- make first row of table the column names --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Table body section --}}
+    <tbody>
+        {{!-- print id, firstName, lastName, rating, birthday, and country --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.firstName}}</td>
+            <td>{{this.lastName}}</td>
+            <td>{{this.rating}}</td>
+            <td>{{this.birthday}}</td>
+            <td>{{this.country}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
