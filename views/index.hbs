@@ -61,3 +61,14 @@
 {{!-- the below line embeds javascript to handle the DOM manipulation and AJAX request --}}
 <script src="./js/add_player.js"></script>
 
+
+{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%206%20-%20Dynamically%20Filling%20Dropdowns%20and%20Adding%20a%20Search%20Box --}}
+<h2>Lookup using HTML</h2>
+<p>Enter the last name of the player:</p>
+<form id="lookup-person-html" method="GET" action="/">
+    <label for="input-lastName">Search by Last Name: </label>
+    <input type="text" name="lastName" id="input-lastName-html-search">
+
+    <input type="submit">
+    <a href="/"><button>Reset</button></a>
+</form>
