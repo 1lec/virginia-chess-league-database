@@ -29,9 +29,19 @@ app.set("view engine", ".hbs");
 
 app.get("/", function (req, res) {
   //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-  let query1 = "SELECT * FROM Players;";
+  let query1;
+
+  if (req.query.lastName === undefined) {
+    query1 = "SELECT * FROM Players;";
+  } else {
+    query1 = `SELECT * FROM Players WHERE lastName LIKE "${req.query.lastName}%"`;
+  }
+
   db.pool.query(query1, function (error, rows, fields) {
-    res.render("index", { data: rows });
+
+    let people = rows;
+    
+    return res.render("index", { data: people });
   });
 });
 
