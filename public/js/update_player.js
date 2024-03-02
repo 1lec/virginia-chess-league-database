@@ -23,3 +23,17 @@ updatePlayerForm.addEventListener("submit", function (e) {
   };
   xhttp.sent(JSON.stringify(data));
 });
+
+
+function updateRow(data, playerID) {
+    let parsedData = JSON.parse(data);
+
+    let table = document.getElementById("players-table");
+
+    for (let i = 0, row; row = table.rows[i], i++) {
+        if (table.rows[i].getAttribute("data-value") == playerID) {
+            let updateRowIndex = table.getElementsByTagName("tr")[i];
+
+        }
+    }
+}
