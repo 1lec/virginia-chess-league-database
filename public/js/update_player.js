@@ -1,0 +1,1 @@
+let updatePersonForm = document.getElementById('update-player-form-ajax')
