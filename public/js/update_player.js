@@ -1,3 +1,5 @@
+//Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
+
 let updatePlayerForm = document.getElementById("update-player-form-ajax");
 
 updatePlayerForm.addEventListener("submit", function (e) {
