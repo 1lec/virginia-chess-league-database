@@ -75,39 +75,27 @@ app.post("/createPlayer-ajax", function (req, res) {
 
 //Citation https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data#create-a-delete-route
 
-app.delete("/delete-player-ajax/", function (req, res, next) {
+app.delete('/delete-player-ajax/', function(req,res,next){
   let data = req.body;
   let playerID = parseInt(data.id);
-  let deleteBsg_Cert_People = `DELETE FROM bsg_cert_people WHERE pid = ?`;
-  let deleteBsg_People = `DELETE FROM bsg_people WHERE id = ?`;
+  let deletePlayer = `DELETE FROM Players WHERE playerID = ?`;
 
-  // Run the 1st query
-  db.pool.query(
-    deleteBsg_Cert_People,
-    [playerID],
-    function (error, rows, fields) {
-      if (error) {
-        // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
-        console.log(error);
-        res.sendStatus(400);
-      } else {
-        // Run the second query
-        db.pool.query(
-          deleteBsg_People,
-          [playerID],
-          function (error, rows, fields) {
-            if (error) {
-              console.log(error);
-              res.sendStatus(400);
-            } else {
-              res.sendStatus(204);
+
+        // Run the 1st query
+        db.pool.query(deletePlayer, [playerID], function(error, rows, fields){
+           {
+              // Run the second query
+              db.pool.query(deletePlayer, [playerID], function(error, rows, fields) {
+
+                  if (error) {
+                      console.log(error);
+                      res.sendStatus(400);
+                  } else {
+                      res.sendStatus(204);
+                  }
+              })
             }
-          }
-        );
-      }
-    }
-  );
-});
+})});
 
 app.put("/update-player-ajax", function (req, res, next) {
   let data = req.body;
