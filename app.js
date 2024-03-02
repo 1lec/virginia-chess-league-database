@@ -55,13 +55,13 @@ app.post("/createPlayer-ajax", function (req, res) {
     rating = "NULL";
   }
 
-  query1 = `INSERT INTO Players (firstName, lastName, rating, birthday, country VALUES ('${data.firstName}', '${data.lastName}', ${rating}, ${birthday}, '${data.country}')`;
+  let query1 = `INSERT INTO Players (firstName, lastName, rating, birthday, country) VALUES ('${data.firstName}', '${data.lastName}', ${rating}, '${data.birthday}', '${data.country}')`;
   db.pool.query(query1, function (error, rows, fields) {
     if (error) {
       console.log(error);
       res.sendStatus(400);
     } else {
-      query2 = `SELECT * FROM Players;`;
+      let query2 = `SELECT * FROM Players;`;
       db.pool.query(query2, function (error, rows, fields) {
         if (error) {
           console.log(error);
