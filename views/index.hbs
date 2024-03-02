@@ -24,21 +24,23 @@
     <tbody>
         {{!-- for each row, print playerID, firstName, lastName, rating, birthday, and country --}}
         {{#each data}}
-        <tr>
+        <tr data-value={{this.playerid}}>
             <td>{{this.playerID}}</td>
             <td>{{this.firstName}}</td>
             <td>{{this.lastName}}</td>
             <td>{{this.rating}}</td>
             <td>{{this.birthday}}</td>
             <td>{{this.country}}</td>
+            <td><button onclick="deletePlayer({{this.playerid}})">Delete</button></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
+<script src="./js/delete_player.js"></script>
 
 {{!-- Form to add a record to the table --}}
 <h2>Adding Data with AJAX</h2>
-<p>To add a new person, please enter their information below and click 'Submit'</p>
+<p>To add a new player, please enter their information below and click 'Submit'</p>
 <form id="createPlayer-form-ajax">
     <label for="input-firstName">First Name:</label>
     <input type="text" name="input-firstName" id="input-firstName">
@@ -65,7 +67,7 @@
 {{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%206%20-%20Dynamically%20Filling%20Dropdowns%20and%20Adding%20a%20Search%20Box --}}
 <h2>Lookup using HTML</h2>
 <p>Enter the last name of the player:</p>
-<form id="lookup-person-html" method="GET" action="/">
+<form id="lookup-player-html" method="GET" action="/">
     <label for="input-lastName">Search by Last Name: </label>
     <input type="text" name="lastName" id="input-lastName-html-search">
 

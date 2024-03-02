@@ -66,6 +66,8 @@ addRowToTable = (data) => {
   let birthdayCell = document.createElement("TD");
   let countryCell = document.createElement("TD");
 
+  let deleteCell = document.createElement("TD");
+
   // fill the row's cells with the data
   playerIDCell.innerText = newRow.id;
   firstNameCell.innerText = newRow.firstName;
@@ -74,6 +76,12 @@ addRowToTable = (data) => {
   birthdayCell.innerText = newRow.birthday;
   countryCell.innerText = newRow.country;
 
+  deleteCell = document.createElement("button");
+    deleteCell.innerHTML = "Delete";
+    deleteCell.onclick = function(){
+        deletePlayer(newRow.id);
+    };
+
   //append the cells to the row
   row.appendChild(playerIDCell);
   row.appendChild(firstNameCell);
@@ -81,6 +89,7 @@ addRowToTable = (data) => {
   row.appendChild(ratingCell);
   row.appendChild(birthdayCell);
   row.appendChild(countryCell);
+  row.appendChild(deleteCell);
 
   //add the row to the table
   currentTable.appendChild(row);
