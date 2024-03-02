@@ -93,4 +93,13 @@ addRowToTable = (data) => {
 
   //add the row to the table
   currentTable.appendChild(row);
+
+  //update a row functionality????
+  // Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
+  let selectMenu = document.getElementById("mySelect");
+  let option = document.createElement("option");
+  option.text = newRow.firstName + newRow.lastName + newRow.rating + newRow.birthday + newRow.country;
+  option.value = newRow.id;
+  selectMenu.add(opton);
+
 };
