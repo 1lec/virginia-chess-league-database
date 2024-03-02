@@ -24,16 +24,27 @@ updatePlayerForm.addEventListener("submit", function (e) {
   xhttp.sent(JSON.stringify(data));
 });
 
-
 function updateRow(data, playerID) {
-    let parsedData = JSON.parse(data);
+  let parsedData = JSON.parse(data);
 
-    let table = document.getElementById("players-table");
+  let table = document.getElementById("players-table");
 
-    for (let i = 0, row; row = table.rows[i], i++) {
-        if (table.rows[i].getAttribute("data-value") == playerID) {
-            let updateRowIndex = table.getElementsByTagName("tr")[i];
+  for (let i = 0, row; (row = table.rows[i]), i++; ) {
+    if (table.rows[i].getAttribute("data-value") == playerID) {
+      let updateRowIndex = table.getElementsByTagName("tr")[i];
 
-        }
+      // 1 should be first name, 2: last name, 3: rating, 4: birthday, 5: country
+      let td1 = updateRowIndex.getElementsByTagName("td")[1];
+      let td2 = updateRowIndex.getElementsByTagName("td")[2];
+      let td3 = updateRowIndex.getElementsByTagName("td")[3];
+      let td4 = updateRowIndex.getElementsByTagName("td")[4];
+      let td5 = updateRowIndex.getElementsByTagName("td")[5];
+
+      td1.innerHTML = parsedData[0].name; //should be first name???
+      td2.innerHTML = parsedData[1].name;
+      td3.innerHTML = parsedData[2].name;
+      td4.innerHTML = parsedData[3].name;
+      td5.innerHTML = parsedData[4].name;
     }
+  }
 }
