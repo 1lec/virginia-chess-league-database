@@ -120,19 +120,19 @@ app.delete('/delete-player-ajax/', function(req,res,next){
 app.put("/update-player-ajax", function (req, res, next) {
   let data = req.body;
 
-  let firstName = parseInt(data.firstName);
-  let lastName = parseInt(data.lastName);
+  let firstName = data.firstName;
+  let lastName = data.lastName;
   let rating = parseInt(data.rating);
-  let birthday = parseInt(data.birthday);
-  let country = parseInt(data.country);
+  let birthday = data.birthday;
+  let country = data.country;
 
-  let player = parseInt(data.fullname);
+  let player = data.fullname;
 
   let queryUpdatePlayer = `UPDATE Players SET firstName = ?, lastName = ?, rating = ?, birthday = ?, country = ?
   WHERE Players.playerID = ?`;
   let selectPlayer = `SELECT * FROM Players WHERE playerID = ?`;
 
-  db.poolquery(
+  db.pool.query(
     queryUpdatePlayer,
     [firstName, lastName, rating, birthday, country, player],
     function (error, rows, fields) {

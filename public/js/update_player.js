@@ -5,11 +5,26 @@ let updatePlayerForm = document.getElementById("update-player-form-ajax");
 updatePlayerForm.addEventListener("submit", function (e) {
   e.preventDefault();
   let inputFullName = document.getElementById("mySelect");
+  let inputFirstName = document.getElementById("input-firstName");
+  let inputLastName = document.getElementById("input-lastName");
+  let inputRating = document.getElementById("input-rating");
+  let inputBirthday = document.getElementById("input-birthday");
+  let inputCountry = document.getElementById("input-country");
 
   let fullNameValue = inputFullName.value;
+  let firstNameValue = inputFirstName.value;
+  let lastNameValue = inputLastName.value;
+  let ratingValue = inputRating.value;
+  let birthdayValue = inputBirthday.value;
+  let countryValue = inputCountry.value;
 
   let data = {
     fullname: fullNameValue,
+    firstName: firstNameValue,
+    lastName: lastNameValue,
+    rating: ratingValue,
+    birthday: birthdayValue,
+    country: countryValue,
   };
 
   var xhttp = newXMLHttpRequest();
@@ -23,7 +38,7 @@ updatePlayerForm.addEventListener("submit", function (e) {
       console.log("There was an error with the input!");
     }
   };
-  xhttp.sent(JSON.stringify(data));
+  xhttp.send(JSON.stringify(data));
 });
 
 function updateRow(data, playerID) {

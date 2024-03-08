@@ -1,4 +1,4 @@
-function deletePlayer(playereID) {
+function deletePlayer(playerID) {
     let link = '/delete-player-ajax/';
     let data = {
       id: playerID
