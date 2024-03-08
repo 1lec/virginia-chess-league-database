@@ -59,6 +59,30 @@ app.get("/games", function (req, res) {
   });
 });
 
+app.get("/seasons", function (req, res) {
+  let query1 = "SELECT * FROM Seasons;";
+  
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("seasons", { data: rows });
+  });
+});
+
+app.get("/openings", function (req, res) {
+  let query1 = "SELECT * FROM Openings;";
+  
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("openings", { data: rows });
+  });
+});
+
+app.get("/results", function (req, res) {
+  let query1 = "SELECT * FROM Results;";
+  
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("results", { data: rows });
+  });
+});
+
 //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
 
 app.post("/createPlayer-ajax", function (req, res) {
