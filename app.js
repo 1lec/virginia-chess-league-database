@@ -44,6 +44,26 @@ app.get("/", function (req, res) {
   });
 });
 
+app.get('/seasons', function(req, res)
+    {
+        res.render('seasons');
+    });
+
+app.get('/openings', function(req, res)
+    {
+        res.render('openings');
+    });
+
+app.get('/results', function(req, res)
+    {
+        res.render('results');
+    });
+
+app.get('/games', function(req, res)
+    {
+        res.render('games');
+    });
+
 //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
 
 app.post("/createPlayer-ajax", function (req, res) {
