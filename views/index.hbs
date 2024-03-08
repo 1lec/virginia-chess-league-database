@@ -108,3 +108,37 @@
 </form>
 
 <script src="./js/update_player.js"></script>
+
+
+{{!-- Create Games Table --}}
+<table>
+    {{!-- Games Table Header --}}
+    <thead>
+        {{!-- make first row of table the column names --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>delete</th>
+        </tr>
+    </thead>
+
+    {{!-- Games Table Body/Rows --}}
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.gameID}}</td>
+            <td>{{this.whiteID}}</td>
+            <td>{{this.whiteRating}}</td>
+            <td>{{this.blackID}}</td>
+            <td>{{this.blackRating}}</td>
+            <td>{{this.edoCode}}</td>
+            <td>{{this.seasonID}}</td>
+            <td>{{this.resultID}}</td>
+            <td>{{this.gameDate}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

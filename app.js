@@ -44,6 +44,10 @@ app.get("/", function (req, res) {
   });
 });
 
+app.get("/games", function (req, res) {
+  res.render("games");
+});
+
 //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
 
 app.post("/createPlayer-ajax", function (req, res) {
@@ -75,27 +79,26 @@ app.post("/createPlayer-ajax", function (req, res) {
 
 //Citation https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data#create-a-delete-route
 
-app.delete('/delete-player-ajax/', function(req,res,next){
+app.delete("/delete-player-ajax/", function (req, res, next) {
   let data = req.body;
   let playerID = parseInt(data.id);
   let deletePlayer = `DELETE FROM Players WHERE playerID = ?`;
 
-
-        // Run the 1st query
-        db.pool.query(deletePlayer, [playerID], function(error, rows, fields){
-           {
-              // Run the second query
-              db.pool.query(deletePlayer, [playerID], function(error, rows, fields) {
-
-                  if (error) {
-                      console.log(error);
-                      res.sendStatus(400);
-                  } else {
-                      res.sendStatus(204);
-                  }
-              })
-            }
-})});
+  // Run the 1st query
+  db.pool.query(deletePlayer, [playerID], function (error, rows, fields) {
+    {
+      // Run the second query
+      db.pool.query(deletePlayer, [playerID], function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.sendStatus(204);
+        }
+      });
+    }
+  });
+});
 
 app.put("/update-player-ajax", function (req, res, next) {
   let data = req.body;
