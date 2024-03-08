@@ -45,7 +45,18 @@ app.get("/", function (req, res) {
 });
 
 app.get("/games", function (req, res) {
-  res.render("games");
+  let query1 = "SELECT * FROM Games;";
+  
+  // for search game by player name: need to use joins?
+  // if (req.query.lastName === undefined) {
+  //   query1 = "SELECT * FROM Games;";
+  // } else {
+  //   query1 = `SELECT * FROM Games WHERE `
+  // }
+
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("games", { data: rows });
+  });
 });
 
 //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
