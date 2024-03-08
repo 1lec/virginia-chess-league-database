@@ -27,3 +27,20 @@
         {{/each}}
     </tbody>
 </table>
+
+{{!-- Form to add a record to the table --}}
+<h2>Adding Data with AJAX</h2>
+<p>To add a new opening, please enter its ECO Code and name/description and click 'Submit'</p>
+<form id="createOpening-form-ajax">
+    <label for="input-ecoCode">ECO Code:</label>
+    <input type="text" name="input-ecoCode" id="input-ecoCode" required maxlength="3">
+
+    <label for="input-description">Opening Name: </label>
+    <input type="text" name="input-description" id="input-description" required>
+
+
+    <input type="submit">
+</form>
+
+{{!-- the below line embeds javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add-opening.js"></script>

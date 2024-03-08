@@ -46,7 +46,7 @@ app.get("/", function (req, res) {
 
 app.get("/games", function (req, res) {
   let query1 = "SELECT * FROM Games;";
-  
+
   // for search game by player name: need to use joins?
   // if (req.query.lastName === undefined) {
   //   query1 = "SELECT * FROM Games;";
@@ -61,7 +61,7 @@ app.get("/games", function (req, res) {
 
 app.get("/seasons", function (req, res) {
   let query1 = "SELECT * FROM Seasons;";
-  
+
   db.pool.query(query1, function (error, rows, fields) {
     res.render("seasons", { data: rows });
   });
@@ -69,7 +69,7 @@ app.get("/seasons", function (req, res) {
 
 app.get("/openings", function (req, res) {
   let query1 = "SELECT * FROM Openings;";
-  
+
   db.pool.query(query1, function (error, rows, fields) {
     res.render("openings", { data: rows });
   });
@@ -77,7 +77,7 @@ app.get("/openings", function (req, res) {
 
 app.get("/results", function (req, res) {
   let query1 = "SELECT * FROM Results;";
-  
+
   db.pool.query(query1, function (error, rows, fields) {
     res.render("results", { data: rows });
   });
@@ -100,6 +100,27 @@ app.post("/createPlayer-ajax", function (req, res) {
       res.sendStatus(400);
     } else {
       let query2 = `SELECT * FROM Players;`;
+      db.pool.query(query2, function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.send(rows);
+        }
+      });
+    }
+  });
+});
+
+app.post("/createOpening-ajax", function (req, res) {
+  let data = req.body;
+  let query1 = `INSERT INTO Openings (ecoCode, description) VALUES ('${data.ecoCode}', '${data.description}')`;
+  db.pool.query(query1, function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      let query2 = `SELECT * FROM Openings;`;
       db.pool.query(query2, function (error, rows, fields) {
         if (error) {
           console.log(error);
