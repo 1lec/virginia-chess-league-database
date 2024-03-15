@@ -29,6 +29,11 @@ app.set("view engine", ".hbs");
 
 app.get("/", function (req, res) {
   //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+  res.send("The server is running.");
+});
+
+app.get("/players", function (req, res) {
+  //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
   let query1;
 
   if (req.query.lastName === undefined) {
@@ -40,7 +45,46 @@ app.get("/", function (req, res) {
   db.pool.query(query1, function (error, rows, fields) {
     let people = rows;
 
-    return res.render("index", { data: people });
+    return res.render("players", { data: people });
+  });
+});
+
+app.get("/games", function (req, res) {
+  let query1 = "SELECT * FROM Games;";
+
+  // for search game by player name: need to use joins?
+  // if (req.query.lastName === undefined) {
+  //   query1 = "SELECT * FROM Games;";
+  // } else {
+  //   query1 = `SELECT * FROM Games WHERE `
+  // }
+
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("games", { data: rows });
+  });
+});
+
+app.get("/seasons", function (req, res) {
+  let query1 = "SELECT * FROM Seasons;";
+
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("seasons", { data: rows });
+  });
+});
+
+app.get("/openings", function (req, res) {
+  let query1 = "SELECT * FROM Openings;";
+
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("openings", { data: rows });
+  });
+});
+
+app.get("/results", function (req, res) {
+  let query1 = "SELECT * FROM Results;";
+
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("results", { data: rows });
   });
 });
 
@@ -73,29 +117,73 @@ app.post("/createPlayer-ajax", function (req, res) {
   });
 });
 
+app.post("/createOpening-ajax", function (req, res) {
+  let data = req.body;
+  let query1 = `INSERT INTO Openings (ecoCode, description) VALUES ('${data.ecoCode}', '${data.description}')`;
+  db.pool.query(query1, function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      let query2 = `SELECT * FROM Openings;`;
+      db.pool.query(query2, function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.send(rows);
+        }
+      });
+    }
+  });
+});
+
+app.post("/createSeason-ajax", function (req, res) {
+  let data = req.body;
+  let query1 = `INSERT INTO Seasons (seasonName) VALUES ('${data.seasonName}')`;
+  db.pool.query(query1, function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      let query2 = `SELECT * FROM Seasons;`;
+      db.pool.query(query2, function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.send(rows);
+        }
+      });
+    }
+  });
+});
+
 //Citation https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data#create-a-delete-route
 
-app.delete('/delete-player-ajax/', function(req,res,next){
+app.delete("/delete-player-ajax/", function (req, res, next) {
   let data = req.body;
-  let playerID = parseInt(data.id);
+  let playerID = parseInt(data.playerID);
   let deletePlayer = `DELETE FROM Players WHERE playerID = ?`;
 
-
-        // Run the 1st query
-        db.pool.query(deletePlayer, [playerID], function(error, rows, fields){
-           {
-              // Run the second query
-              db.pool.query(deletePlayer, [playerID], function(error, rows, fields) {
-
-                  if (error) {
-                      console.log(error);
-                      res.sendStatus(400);
-                  } else {
-                      res.sendStatus(204);
-                  }
-              })
-            }
-})});
+  // Run the 1st query
+  db.pool.query(deletePlayer, [playerID], function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sentStatus(400);
+    } else {
+      // Run the second query
+      db.pool.query(deletePlayer, [playerID], function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.sendStatus(204);
+        }
+      });
+    }
+  });
+});
 
 app.put("/update-player-ajax", function (req, res, next) {
   let data = req.body;

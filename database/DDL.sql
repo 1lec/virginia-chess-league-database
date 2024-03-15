@@ -21,7 +21,7 @@ CREATE OR REPLACE TABLE Players (
 
 CREATE OR REPLACE TABLE Seasons (
     seasonID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name varchar(255) NOT NULL
+    seasonName varchar(255) NOT NULL
 );
 
 CREATE OR REPLACE TABLE Openings (
