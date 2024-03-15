@@ -29,19 +29,7 @@ app.set("view engine", ".hbs");
 
 app.get("/", function (req, res) {
   //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-  let query1;
-
-  if (req.query.lastName === undefined) {
-    query1 = "SELECT * FROM Players;";
-  } else {
-    query1 = `SELECT * FROM Players WHERE lastName LIKE "${req.query.lastName}%"`;
-  }
-
-  db.pool.query(query1, function (error, rows, fields) {
-    let people = rows;
-
-    return res.render("index", { data: people });
-  });
+  res.send("The server is running.");
 });
 
 app.get("/players", function (req, res) {
@@ -110,7 +98,7 @@ app.post("/createPlayer-ajax", function (req, res) {
     rating = "NULL";
   }
 
-  let query1 = `INSERT INTO Players (firstName, lastName, rating, birthday, country) VALUES ('${data.firstName}', '${data.lastName}', ${rating}, '${data.birthday}', '${data.country}')`;
+  let query1 = `INSERT INTO Players (firstName, lastName, rating, birthday, country) VALUES ('${data.firstName}', '${data.lastName}', ${rating}, '${data.birthday}', '${data.country}');`;
   db.pool.query(query1, function (error, rows, fields) {
     if (error) {
       console.log(error);
@@ -131,13 +119,34 @@ app.post("/createPlayer-ajax", function (req, res) {
 
 app.post("/createOpening-ajax", function (req, res) {
   let data = req.body;
-  let query1 = `INSERT INTO Openings (ecoCode, description) VALUES ('${data.ecoCode}', '${data.description}')`;
+  let query1 = `INSERT INTO Openings (ecoCode, description) VALUES ('${data.ecoCode}', '${data.description}');`;
   db.pool.query(query1, function (error, rows, fields) {
     if (error) {
       console.log(error);
       res.sendStatus(400);
     } else {
       let query2 = `SELECT * FROM Openings;`;
+      db.pool.query(query2, function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.send(rows);
+        }
+      });
+    }
+  });
+});
+
+app.post("/createSeason-ajax", function (req, res) {
+  let data = req.body;
+  let query1 = `INSERT INTO Seasons (seasonName) VALUES ('${data.seasonName}');`;
+  db.pool.query(query1, function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      let query2 = `SELECT * FROM Seasons;`;
       db.pool.query(query2, function (error, rows, fields) {
         if (error) {
           console.log(error);
