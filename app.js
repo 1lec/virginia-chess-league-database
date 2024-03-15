@@ -98,7 +98,7 @@ app.post("/createPlayer-ajax", function (req, res) {
     rating = "NULL";
   }
 
-  let query1 = `INSERT INTO Players (firstName, lastName, rating, birthday, country) VALUES ('${data.firstName}', '${data.lastName}', ${rating}, '${data.birthday}', '${data.country}');`;
+  let query1 = `INSERT INTO Players (firstName, lastName, rating, birthday, country) VALUES ('${data.firstName}', '${data.lastName}', ${rating}, '${data.birthday}', '${data.country}')`;
   db.pool.query(query1, function (error, rows, fields) {
     if (error) {
       console.log(error);
@@ -119,7 +119,7 @@ app.post("/createPlayer-ajax", function (req, res) {
 
 app.post("/createOpening-ajax", function (req, res) {
   let data = req.body;
-  let query1 = `INSERT INTO Openings (ecoCode, description) VALUES ('${data.ecoCode}', '${data.description}');`;
+  let query1 = `INSERT INTO Openings (ecoCode, description) VALUES ('${data.ecoCode}', '${data.description}')`;
   db.pool.query(query1, function (error, rows, fields) {
     if (error) {
       console.log(error);
@@ -140,7 +140,7 @@ app.post("/createOpening-ajax", function (req, res) {
 
 app.post("/createSeason-ajax", function (req, res) {
   let data = req.body;
-  let query1 = `INSERT INTO Seasons (seasonName) VALUES ('${data.seasonName}');`;
+  let query1 = `INSERT INTO Seasons (seasonName) VALUES ('${data.seasonName}')`;
   db.pool.query(query1, function (error, rows, fields) {
     if (error) {
       console.log(error);
