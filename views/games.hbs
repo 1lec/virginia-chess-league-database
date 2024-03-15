@@ -27,7 +27,7 @@
             <td>{{this.whiteRating}}</td>
             <td>{{this.blackID}}</td>
             <td>{{this.blackRating}}</td>
-            <td>{{this.edoCode}}</td>
+            <td>{{this.ecoCode}}</td>
             <td>{{this.seasonID}}</td>
             <td>{{this.resultID}}</td>
             <td>{{this.gameDate}}</td>
@@ -40,23 +40,49 @@
 <h2>Adding Data with AJAX</h2>
 <p>To add a new game, please enter their information below and click 'Submit'</p>
 <form id="createGame-form-ajax">
-    <label for="input-firstName">First Name:</label>
-    <input type="text" name="input-firstName" id="input-firstName">
+    <label for="input-whiteFullName"> White Pieces: </label>
+    <select name="input-whiteFullName" id="mySelect" required>
+        <option value="test">Select</option>
+        {{#each data}}
+        <option value="{{this.id}}">{{this.firstName}} {{this.lastName}}</option>
+        {{/each}}
+    </select>
 
-    <label for="input-lastName">Last Name:</label>
-    <input type="text" name="input-lastName" id="input-lastName">
+    <label for="input-blackFullName"> Black Pieces: </label>
+    <select name="input-blackFullName" id="mySelect" required>
+        <option value="test">Select</option>
+        {{#each data}}
+        <option value="{{this.id}}">{{this.firstName}} {{this.lastName}}</option>
+        {{/each}}
+    </select>
 
-    <label for="input-rating">Rating:</label>
-    <input type="number" name="input-rating" id="input-rating">
+    <label for="input-gameResult">Result:</label>
+    <select name="input-gameResult" id="mySelect">
+        <option value="test">Select</option>
+        {{#each data}}
+        <option value="{{this.id}}">{{this.firstName}}</option>
+        {{/each}}
+    </select>
 
-    <label for="input-birthday">Birthday:</label>
-    <input type="date" name="input-birthday" id="input-birthday">
+    <label for="input-gameEcoCode">ECO Code:</label>
+    <input type="text" name="input-gameEcoCode" id="input-gameEcoCode" maxlength="3">
+    
+    <label for="input-gameDate">Date:</label>
+    <input type="date" name="input-gameDate" id="input-gameDate" required>
 
-    <label for="input-country">Country:</label>
-    <input type="text" name="input-country" id="input-country">
+    <label for="input-gameSeason">Season:</label>
+    <select name="input-gameSeason" id="mySelect" required>
+        <option value="test">Select</option>
+        {{#each data}}
+        <option value="{{this.id}}">{{this.seasonName}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-gameLocation">Location:</label>
+    <input type="text" name="input-gameLocation" id="input-gameLocation">
 
     <input type="submit">
 </form>
 
 {{!-- the below line embeds javascript to handle the DOM manipulation and AJAX request --}}
-<script src="./js/add-player.js"></script>
+<script src="./js/add-game.js"></script>
