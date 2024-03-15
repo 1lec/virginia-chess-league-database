@@ -1,6 +1,11 @@
-{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data --}}
+{{!-- Delete functionality --}}
+{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data --}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 
 {{!-- Create a table --}}
+{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data --}}
+
 <table id="players-table">
     {{!-- Table Header section--}}
     <thead>
@@ -26,13 +31,18 @@
             <td>{{this.rating}}</td>
             <td>{{this.birthday}}</td>
             <td>{{this.country}}</td>
+            {{!-- Delete button --}}
+            {{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data --}}
             <td><button onclick="deletePlayer({{this.playerID}})">Delete</button></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
+{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data --}}
+<script src="./js/delete_player.js"></script>
 
 {{!-- Form to add a record to the table --}}
+{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data --}}
 <h2>Adding Data with AJAX</h2>
 <p>To add a new player, please enter their information below and click 'Submit'</p>
 <form id="createPlayer-form-ajax">
@@ -57,7 +67,7 @@
 {{!-- the below line embeds javascript to handle the DOM manipulation and AJAX request --}}
 <script src="./js/add-player.js"></script>
 
-
+{{!-- Search by name input functionality --}}
 {{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%206%20-%20Dynamically%20Filling%20Dropdowns%20and%20Adding%20a%20Search%20Box --}}
 <h2>Lookup using HTML</h2>
 <p>Enter the last name of the player:</p>
@@ -69,6 +79,7 @@
     <a href="/"><button>Reset</button></a>
 </form>
 
+{{!-- Update functionality --}}
 {{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data --}}
 <h2>Updating a Player's Information</h2>
 <p>To update a player, select their full name and enter the information to be updated.</p>
