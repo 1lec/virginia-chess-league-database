@@ -163,12 +163,15 @@ app.post("/createSeason-ajax", function (req, res) {
 
 app.delete("/delete-player-ajax/", function (req, res, next) {
   let data = req.body;
-  let playerID = parseInt(data.id);
+  let playerID = parseInt(data.playerID);
   let deletePlayer = `DELETE FROM Players WHERE playerID = ?`;
 
   // Run the 1st query
   db.pool.query(deletePlayer, [playerID], function (error, rows, fields) {
-    {
+    if (error) {
+      console.log(error);
+      res.sentStatus(400);
+    } else {
       // Run the second query
       db.pool.query(deletePlayer, [playerID], function (error, rows, fields) {
         if (error) {
