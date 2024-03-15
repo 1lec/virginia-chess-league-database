@@ -29,7 +29,7 @@ app.set("view engine", ".hbs");
 
 app.get("/", function (req, res) {
   //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-  res.send("The server is running.");
+  res.render("index");
 });
 
 app.get("/players", function (req, res) {
