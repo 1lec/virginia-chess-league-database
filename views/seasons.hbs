@@ -22,6 +22,7 @@
         {{#each data}}
         <tr data-value={{this.seasonID}}>
             <td>{{this.seasonName}}</td>
+            <td><button onclick="deleteSeason({{this.id}})">Delete</button></td>
         </tr>
         {{/each}}
     </tbody>
