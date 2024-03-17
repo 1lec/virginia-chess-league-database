@@ -55,12 +55,13 @@ addRowToTable = (data) => {
   deleteCell = document.createElement("button");
   deleteCell.innerHTML = "Delete";
   deleteCell.onclick = function () {
-    deletePlayer(newRow.id);
+    deleteSeason(newRow.id);
   };
 
   //append the cells to the row
   row.appendChild(seasonIDCell);
   row.appendChild(seasonNameCell);
+  row.appendChild(deleteCell);
 
   //add the row to the table
   currentTable.appendChild(row);

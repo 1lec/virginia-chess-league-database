@@ -174,7 +174,22 @@ app.post("/createGame-ajax", function (req, res) {
 
   query1 = `INSERT INTO Games ()`
 })
+app.post("/createSeason-ajax")
 
+app.delete("/delete-season-ajax", function (req, res, next){
+  let data = req.body;
+  let seasonID = parseInt(data.id);
+  let deleteSeason = `DELETE FROM Seasons WHERE seasonID = ?`;
+
+  db.pool.query(deleteSeason, [seasonID], function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(204);
+    }
+  })
+})
 /*
     LISTENER
 */
