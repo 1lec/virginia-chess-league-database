@@ -10,7 +10,7 @@ addSeasonForm.addEventListener("submit", function (e) {
   let seasonNameValue = inputSeasonName.value;
 
   let data = {
-    name: seasonNameValue,
+    seasonName: seasonNameValue,
   };
 
   //setup AJAX request

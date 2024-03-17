@@ -1,19 +1,17 @@
 let addOpeningForm = document.getElementById("createOpening-form-ajax");
 
-addPlayerForm.addEventListener("submit", function (e) {
+addOpeningForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
   let inputEcoCode = document.getElementById("input-ecoCode");
-  let inputDescription = document.getElementById("input-description");
-
+  let inputVarName = document.getElementById("input-varName");
 
   let ecoCodeValue = inputEcoCode.value;
-  let descriptionValue = inputDescription.value;
-
+  let varNameValue = inputVarName.value;
 
   let data = {
     ecoCode: ecoCodeValue,
-    description: descriptionValue,
+    varName: varNameValue,
   };
 
   //setup AJAX request
@@ -26,8 +24,7 @@ addPlayerForm.addEventListener("submit", function (e) {
       addRowToTable(xhttp.response);
 
       inputEcoCode.value = "";
-      inputDescription.value = "";
-
+      inputVarName.value = "";
     } else if (xhttp.readyState == 4 && xhttp.status != 200) {
       console.log("There was an error with the input.");
     }
@@ -49,24 +46,24 @@ addRowToTable = (data) => {
   //create a row
   let row = document.createElement("TR");
   let ecoCodeCell = document.createElement("TD");
-  let descriptionCell = document.createElement("TD");
-
+  let varNameCell = document.createElement("TD");
 
   let deleteCell = document.createElement("TD");
 
   // fill the row's cells with the data
   ecoCodeCell.innerText = newRow.ecoCode;
-  descriptionCell.innerText = newRow.description;
+  varNameCell.innerText = newRow.varName;
 
   deleteCell = document.createElement("button");
-    deleteCell.innerHTML = "Delete";
-    deleteCell.onclick = function(){
-        deleteOpening(newRow.ecoCode);
-    };
+  deleteCell.innerHTML = "Delete";
+  deleteCell.onclick = function () {
+    deleteOpening(newRow.ecoCode);
+  };
 
   //append the cells to the row
   row.appendChild(ecoCodeCell);
-  row.appendChild(descriptionCell);
+  row.appendChild(varNameCell);
+  row.appendChild(deleteCell);
 
   //add the row to the table
   currentTable.appendChild(row);
@@ -77,8 +74,7 @@ addRowToTable = (data) => {
   let selectMenu = document.getElementById("mySelect");
   let option = document.createElement("option");
   //is this right to have newRow.ecoCode in the text and value? we should be able to update both of them I think.
-  option.text = newRow.ecoCode + newRow.description;
+  option.text = newRow.ecoCode + newRow.varName;
   option.value = newRow.ecoCode;
   selectMenu.add(opton);
-
 };

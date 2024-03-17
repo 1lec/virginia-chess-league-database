@@ -24,7 +24,7 @@
     <tbody>
         {{!-- for each row, print playerID, firstName, lastName, rating, birthday, and country --}}
         {{#each data}}
-        <tr data-value={{this.id}}>
+        <tr data-value={{this.playerID}}>
             <td>{{this.playerID}}</td>
             <td>{{this.firstName}}</td>
             <td>{{this.lastName}}</td>
@@ -33,7 +33,7 @@
             <td>{{this.country}}</td>
             {{!-- Delete button --}}
             {{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data --}}
-            <td><button onclick="deletePlayer({{this.id}})">Delete</button></td>
+            <td><button onclick="deletePlayer({{this.playerID}})">Delete</button></td>
         </tr>
         {{/each}}
     </tbody>

@@ -23,6 +23,7 @@
         <tr>
             <td>{{this.ecoCode}}</td>
             <td>{{this.varName}}</td>
+            <td><button onclick="deleteOpening({{this.id}})">Delete</button></td>
         </tr>
         {{/each}}
     </tbody>
@@ -30,13 +31,13 @@
 
 {{!-- Form to add a record to the table --}}
 <h2>Adding Data with AJAX</h2>
-<p>To add a new opening, please enter its ECO Code and name/description and click 'Submit'</p>
+<p>To add a new opening, please enter its ECO Code and name and click 'Submit'</p>
 <form id="createOpening-form-ajax">
     <label for="input-ecoCode">ECO Code:</label>
     <input type="text" name="input-ecoCode" id="input-ecoCode" required maxlength="3">
 
-    <label for="input-description">Opening Name: </label>
-    <input type="text" name="input-description" id="input-description" required>
+    <label for="input-varName">Opening Name: </label>
+    <input type="text" name="input-varName" id="input-varName" required>
 
 
     <input type="submit">

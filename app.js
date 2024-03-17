@@ -174,7 +174,26 @@ app.post("/createGame-ajax", function (req, res) {
 
   query1 = `INSERT INTO Games ()`;
 });
-app.post("/createSeason-ajax");
+app.post("/createSeason-ajax", function (req, res) {
+  let data = req.body;
+  query1 = `INSERT INTO Seasons (seasonName) VALUES ('${data.seasonName}')`;
+  db.pool.query(query1, function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      query2 = `SELECT * FROM Seasons;`;
+      db.pool.query(query2, function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.send(rows);
+        }
+      });
+    }
+  });
+});
 
 app.delete("/delete-season-ajax", function (req, res, next) {
   let data = req.body;
@@ -201,6 +220,27 @@ app.delete("/delete-season-ajax", function (req, res, next) {
       }
     }
   );
+});
+
+app.post("/createOpening-ajax", function (req, res) {
+  let data = req.body;
+  query1 = `INSERT INTO Openings (ecoCode, varName) VALUES ('${data.ecoCode}', '${data.varName}')`;
+  db.pool.query(query1, function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      query2 = `SELECT * FROM Openings;`;
+      db.pool.query(query2, function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.send(rows);
+        }
+      });
+    }
+  });
 });
 /*
     LISTENER
