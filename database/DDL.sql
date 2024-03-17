@@ -68,7 +68,7 @@ INSERT INTO Players(firstName, lastName, birthday)
 VALUES ('Cookie', 'Monster', '1969-11-02');
 
 -- Seasons
-INSERT INTO Seasons (name)
+INSERT INTO Seasons (seasonName)
 VALUES ('Summer 2023'),
 ('Fall 2023'),
 ('Winter 2023');

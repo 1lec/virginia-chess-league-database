@@ -172,24 +172,36 @@ app.put("/update-player-ajax", function (req, res, next) {
 app.post("/createGame-ajax", function (req, res) {
   let data = req.body;
 
-  query1 = `INSERT INTO Games ()`
-})
-app.post("/createSeason-ajax")
+  query1 = `INSERT INTO Games ()`;
+});
+app.post("/createSeason-ajax");
 
-app.delete("/delete-season-ajax", function (req, res, next){
+app.delete("/delete-season-ajax", function (req, res, next) {
   let data = req.body;
   let seasonID = parseInt(data.id);
+  let deleteSeasonFromGames = `DELETE FROM Games Where seasonID = ?`;
   let deleteSeason = `DELETE FROM Seasons WHERE seasonID = ?`;
 
-  db.pool.query(deleteSeason, [seasonID], function (error, rows, fields) {
-    if (error) {
-      console.log(error);
-      res.sendStatus(400);
-    } else {
-      res.sendStatus(204);
+  db.pool.query(
+    deleteSeasonFromGames,
+    [seasonID],
+    function (error, rows, fields) {
+      if (error) {
+        console.log(error);
+        res.sendStatus(400);
+      } else {
+        db.pool.query(deleteSeason, [seasonID], function (error, rows, fields) {
+          if (error) {
+            console.log(error);
+            res.sendStatus(400);
+          } else {
+            res.sendStatus(204);
+          }
+        });
+      }
     }
-  })
-})
+  );
+});
 /*
     LISTENER
 */
