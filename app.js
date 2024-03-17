@@ -169,6 +169,12 @@ app.put("/update-player-ajax", function (req, res, next) {
   );
 });
 
+app.post("/createGame-ajax", function (req, res) {
+  let data = req.body;
+
+  query1 = `INSERT INTO Games ()`
+})
+
 /*
     LISTENER
 */
