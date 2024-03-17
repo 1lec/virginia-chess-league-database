@@ -20,7 +20,8 @@
     {{!-- Seasons Table Body/Rows --}}
     <tbody>
         {{#each data}}
-        <tr data-value={{this.seasonID}}>
+        <tr data-value={{this.id}}>
+            <td>{{this.seasonID}}</td>
             <td>{{this.seasonName}}</td>
             <td><button onclick="deleteSeason({{this.id}})">Delete</button></td>
         </tr>
