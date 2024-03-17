@@ -242,6 +242,29 @@ app.post("/createOpening-ajax", function (req, res) {
     }
   });
 });
+
+app.delete("/delete-opening-ajax/", function (req, res, next) {
+  let data = req.body;
+  let ecoCode = parseInt(data.id);
+
+  let deleteOpening = `DELETE FROM Openings WHERE ecoCode = ?`;
+
+  db.pool.query(deleteOpening, [ecoCode], function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      db.pool.query(deleteOpening, [ecoCode], function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.sendStatus(204);
+        }
+      });
+    }
+  });
+});
 /*
     LISTENER
 */
