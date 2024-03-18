@@ -52,9 +52,50 @@ app.get("/seasons", function (req, res) {
 
 app.get("/games", function (req, res) {
   let query1 = "SELECT * FROM Games;";
+  let query2 = "SELECT * FROM Players;";
+  let query3 = "SELECT * FROM Results;";
+  let query4 = "SELECT * FROM Seasons;";
 
-  db.pool.query(query1, function (error, rows, fields) {
-    res.render("games", { data: rows });
+  let gamesRows;
+  let playersRows;
+  let resultsRows;
+
+  db.pool.query(query1, function (error, games, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400).json(error);
+    }
+    gamesRows = games;
+    // now get players!
+    db.pool.query(query2, function (error, players, fields) {
+      if (error) {
+        console.log(error);
+        res.sendStatus(400).json(error);
+      }
+      playersRows = players;
+      //now get results
+      db.pool.query(query3, function (error, results, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400).json(error);
+        }
+        resultsRows = results;
+        //now get seasons
+        db.pool.query(query4, function (error, seasons, fields) {
+          if (error) {
+            console.log(error);
+            res.sendStatus(400).json(error);
+          }
+          console.log(gamesRows);
+          res.render("games", {
+            games: gamesRows,
+            players: playersRows,
+            results: resultsRows,
+            seasons: seasons,
+          });
+        });
+      });
+    });
   });
   //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
 });
@@ -191,8 +232,19 @@ app.put("/put-player-ajax", function (req, res, next) {
 
 app.post("/createGame-ajax", function (req, res) {
   let data = req.body;
+  console.log(data);
+  const whiteID = parseInt(data.whiteName);
+  const blackID = parseInt(data.blackName);
+  const gameResultID = parseInt(data.gameResult);
+  const gameSeasonID = parseInt(data.gameSeason);
+  console.log(whiteID);
 
-  query1 = `INSERT INTO Games ()`;
+  const query1 = `INSERT INTO Games (whiteID, whiteRating, blackID, blackRating, ecoCode, seasonID, resultID, gameDate, location) 
+  VALUES ((SELECT playerID from Players WHERE playerID = ?), (SELECT rating FROM Players WHERE playerID = ?),
+  (SELECT playerID FROM Players WHERE playerID = ?), (SELECT rating FROM Players WHERE playerID = ?),
+  (SELECT ecoCode FROM Openings WHERE ecoCode = ?), (SELECT seasonID FROM Seasons WHERE seasonID = ?),
+  (SELECT resultID FROM Results WHERE resultID = ?), '${games.gameDate}', '${games.location})`;
+  const query2 = `SELECT * FROM Games;`;
 });
 app.post("/createSeason-ajax", function (req, res) {
   let data = req.body;
@@ -218,23 +270,48 @@ app.post("/createSeason-ajax", function (req, res) {
 app.delete("/delete-season-ajax", function (req, res, next) {
   let data = req.body;
   let seasonID = parseInt(data.id);
-  let deleteSeasonFromGames = `DELETE FROM Games Where seasonID = ?`;
+  // let deleteSeasonFromGames = `DELETE FROM Games Where seasonID = ?`;
   let deleteSeason = `DELETE FROM Seasons WHERE seasonID = ?`;
 
+  db.pool.query(deleteSeason, [seasonID], function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      db.pool.query(deleteSeason, [seasonID], function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.sendStatus(204);
+        }
+      });
+    }
+  });
+});
+
+app.put("/put-season-ajax", function (req, res, next) {
+  let data = req.body;
+  let seasonID = parseInt(data.seasonID);
+  let updatedSeasonName = data.seasonName;
+
+  let queryUpdateSeasonName = `UPDATE Seasons SET seasonName = ? WHERE Seasons.seasonID = ?`;
+  let selectSeason = `SELECT * from Seasons WHERE seasonID = ?`;
+
   db.pool.query(
-    deleteSeasonFromGames,
-    [seasonID],
+    queryUpdateSeasonName,
+    [updatedSeasonName, seasonID],
     function (error, rows, fields) {
       if (error) {
         console.log(error);
         res.sendStatus(400);
       } else {
-        db.pool.query(deleteSeason, [seasonID], function (error, rows, fields) {
+        db.pool.query(selectSeason, [seasonID], function (error, rows, fields) {
           if (error) {
             console.log(error);
             res.sendStatus(400);
           } else {
-            res.sendStatus(204);
+            res.send(rows);
           }
         });
       }
