@@ -217,7 +217,10 @@ app.post("/createGame-ajax", function (req, res) {
   console.log(whiteID);
 
   const query1 = `INSERT INTO Games (whiteID, whiteRating, blackID, blackRating, ecoCode, seasonID, resultID, gameDate, location) 
-  VALUES ()`;
+  VALUES ((SELECT playerID from Players WHERE playerID = ?), (SELECT rating FROM Players WHERE playerID = ?),
+  (SELECT playerID FROM Players WHERE playerID = ?), (SELECT rating FROM Players WHERE playerID = ?),
+  (SELECT ecoCode FROM Openings WHERE ecoCode = ?), (SELECT seasonID FROM Seasons WHERE seasonID = ?),
+  (SELECT resultID FROM Results WHERE resultID = ?), '${games.gameDate}', '${games.location})`;
   const query2 = `SELECT * FROM Games;`;
 });
 app.post("/createSeason-ajax", function (req, res) {
