@@ -21,7 +21,7 @@ CREATE OR REPLACE TABLE Players (
 
 CREATE OR REPLACE TABLE Seasons (
     seasonID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name varchar(255) NOT NULL
+    seasonName varchar(255) NOT NULL
 );
 
 CREATE OR REPLACE TABLE Openings (
@@ -68,7 +68,7 @@ INSERT INTO Players(firstName, lastName, birthday)
 VALUES ('Cookie', 'Monster', '1969-11-02');
 
 -- Seasons
-INSERT INTO Seasons (name)
+INSERT INTO Seasons (seasonName)
 VALUES ('Summer 2023'),
 ('Fall 2023'),
 ('Winter 2023');
@@ -100,7 +100,7 @@ VALUES (
     NULL,
     NULL,
     1,
-    '0-1',
+    0,
     '2023-07-20',
     NULL
 ),
@@ -111,7 +111,7 @@ VALUES (
     NULL,
     'B30',
     1,
-    '1-0',
+    1,
     '2023-08-01',
     'Arlington'
 ),
@@ -122,7 +122,7 @@ VALUES (
     NULL,
     'B18',
     2,
-    '1/2-1/2',
+    2,
     '2023-10-15',
     NULL
 );

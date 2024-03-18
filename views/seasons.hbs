@@ -1,0 +1,70 @@
+<h1>The server is running!</h1>
+<p>If you see this text, the server is <strong>definitely</strong> working!</p>
+
+{{!-- Delete functionality --}}
+{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data --}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<h2>Seasons Table</h2>
+{{!-- Create Seasons Table --}}
+<table id="seasons-table">
+    {{!-- Seasons Table Header --}}
+    <thead>
+        {{!-- make first row of table the column names --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    {{!-- Seasons Table Body/Rows --}}
+    <tbody>
+        {{#each data}}
+        <tr data-value={{this.seasonID}}>
+            <td>{{this.seasonID}}</td>
+            <td>{{this.seasonName}}</td>
+            <td><button onclick="deleteSeason({{this.seasonID}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_season.js"></script>
+
+{{!-- Form to add a record to the table --}}
+<h2>Adding Data with AJAX</h2>
+<p>To add a new Season, please enter the season's name and click 'Submit'</p>
+<form id="createSeason-form-ajax">
+    <label for="input-seasonName">Season Name:</label>
+    <input type="text" name="input-seasonName" id="input-seasonName" required>
+
+    <input type="submit">
+</form>
+
+{{!-- the below line embeds javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add-season.js"></script>
+
+
+<h2>Updating A Season Form</h2>
+<p>To update a season's name, please select the season from the dropdown box and enter the new season name in the text field.</p>
+<form id="update-season-form-ajax">
+
+    <label for="input-seasonName"> Season to update: </label>
+    <select name="input-seasonName" id="mySelect">
+        <option value="test">Select</option>
+        {{#each data}}
+        <option value="{{this.seasonID}}">{{this.seasonName}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-updatedSeasonName"> Corrected Season Name:</label>
+    <input type="text" name="input-updatedSeasonName" id="input-updatedSeasonName" required>
+
+    <input type="submit">
+
+</form>
+
+<script src="./js/update_season.js"></script>

@@ -29,19 +29,52 @@ app.set("view engine", ".hbs");
 
 app.get("/", function (req, res) {
   //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-  let query1;
+  res.render("index");
+});
 
-  if (req.query.lastName === undefined) {
-    query1 = "SELECT * FROM Players;";
-  } else {
-    query1 = `SELECT * FROM Players WHERE lastName LIKE "${req.query.lastName}%"`;
-  }
+app.get("/players", function (req, res) {
+  let query1 = "SELECT * FROM Players;";
 
   db.pool.query(query1, function (error, rows, fields) {
-    let people = rows;
-
-    return res.render("index", { data: people });
+    res.render("players", { data: rows });
   });
+  //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+});
+
+app.get("/seasons", function (req, res) {
+  let query1 = "SELECT * FROM Seasons;";
+
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("seasons", { data: rows });
+  });
+  //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+});
+
+app.get("/games", function (req, res) {
+  let query1 = "SELECT * FROM Games;";
+
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("games", { data: rows });
+  });
+  //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+});
+
+app.get("/openings", function (req, res) {
+  let query1 = "SELECT * FROM Openings;";
+
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("openings", { data: rows });
+  });
+  //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+});
+
+app.get("/results", function (req, res) {
+  let query1 = "SELECT * FROM Results;";
+
+  db.pool.query(query1, function (error, rows, fields) {
+    res.render("results", { data: rows });
+  });
+  //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
 });
 
 app.get('/seasons', function(req, res)
@@ -95,29 +128,28 @@ app.post("/createPlayer-ajax", function (req, res) {
 
 //Citation https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data#create-a-delete-route
 
-app.delete('/delete-player-ajax/', function(req,res,next){
+app.delete("/delete-player-ajax/", function (req, res, next) {
   let data = req.body;
   let playerID = parseInt(data.id);
   let deletePlayer = `DELETE FROM Players WHERE playerID = ?`;
 
+  // Run the 1st query
+  db.pool.query(deletePlayer, [playerID], function (error, rows, fields) {
+    {
+      // Run the second query
+      db.pool.query(deletePlayer, [playerID], function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.sendStatus(204);
+        }
+      });
+    }
+  });
+});
 
-        // Run the 1st query
-        db.pool.query(deletePlayer, [playerID], function(error, rows, fields){
-           {
-              // Run the second query
-              db.pool.query(deletePlayer, [playerID], function(error, rows, fields) {
-
-                  if (error) {
-                      console.log(error);
-                      res.sendStatus(400);
-                  } else {
-                      res.sendStatus(204);
-                  }
-              })
-            }
-})});
-
-app.put("/update-player-ajax", function (req, res, next) {
+app.put("/put-player-ajax", function (req, res, next) {
   let data = req.body;
 
   let firstName = data.firstName;
@@ -152,6 +184,107 @@ app.put("/update-player-ajax", function (req, res, next) {
             }
           }
         );
+      }
+    }
+  );
+});
+
+app.post("/createGame-ajax", function (req, res) {
+  let data = req.body;
+
+  query1 = `INSERT INTO Games ()`;
+});
+app.post("/createSeason-ajax", function (req, res) {
+  let data = req.body;
+  query1 = `INSERT INTO Seasons (seasonName) VALUES ('${data.seasonName}')`;
+  db.pool.query(query1, function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      query2 = `SELECT * FROM Seasons;`;
+      db.pool.query(query2, function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.send(rows);
+        }
+      });
+    }
+  });
+});
+
+app.delete("/delete-season-ajax", function (req, res, next) {
+  let data = req.body;
+  let seasonID = parseInt(data.id);
+  let deleteSeasonFromGames = `DELETE FROM Games Where seasonID = ?`;
+  let deleteSeason = `DELETE FROM Seasons WHERE seasonID = ?`;
+
+  db.pool.query(
+    deleteSeasonFromGames,
+    [seasonID],
+    function (error, rows, fields) {
+      if (error) {
+        console.log(error);
+        res.sendStatus(400);
+      } else {
+        db.pool.query(deleteSeason, [seasonID], function (error, rows, fields) {
+          if (error) {
+            console.log(error);
+            res.sendStatus(400);
+          } else {
+            res.sendStatus(204);
+          }
+        });
+      }
+    }
+  );
+});
+
+app.post("/createOpening-ajax", function (req, res) {
+  let data = req.body;
+  query1 = `INSERT INTO Openings (ecoCode, varName) VALUES ('${data.ecoCode}', '${data.varName}')`;
+  db.pool.query(query1, function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      query2 = `SELECT * FROM Openings;`;
+      db.pool.query(query2, function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.send(rows);
+        }
+      });
+    }
+  });
+});
+
+app.delete("/delete-opening-ajax/", function (req, res, next) {
+  let data = req.body;
+  let ecoCode = parseInt(data.id);
+  let deleteOpeningFromGames = `DELETE FROM Games Where ecoCode = ?`;
+  let deleteOpening = `DELETE FROM Openings WHERE ecoCode = ?`;
+
+  db.pool.query(
+    deleteOpeningFromGames,
+    [ecoCode],
+    function (error, rows, fields) {
+      if (error) {
+        console.log(error);
+        res.sendStatus(400);
+      } else {
+        db.pool.query(deleteOpening, [ecoCode], function (error, rows, fields) {
+          if (error) {
+            console.log(error);
+            res.sendStatus(400);
+          } else {
+            res.sendStatus(204);
+          }
+        });
       }
     }
   );

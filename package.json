@@ -9,7 +9,7 @@
   "author": "Luann Pascucci Alec Andersen",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^4.18.3",
     "express-handlebars": "^7.1.2",
     "forever": "^0.14.2",
     "mysql": "^2.18.1"
