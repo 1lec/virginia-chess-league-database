@@ -40,7 +40,7 @@ CREATE OR REPLACE TABLE Games (
     whiteRating smallint,
     blackID int NOT NULL,
     blackRating smallint,
-    ecoCode char(3),
+    ecoCode char(3) NULL,
     seasonID int NOT NULL,
     resultID tinyint NOT NULL,
     gameDate date NOT NULL,
@@ -49,7 +49,8 @@ CREATE OR REPLACE TABLE Games (
     ON DELETE RESTRICT,
     FOREIGN KEY (blackID) REFERENCES Players(playerID)
     ON DELETE RESTRICT,
-    FOREIGN KEY (ecoCode) REFERENCES Openings(ecoCode),
+    FOREIGN KEY (ecoCode) REFERENCES Openings(ecoCode)
+    ON DELETE SET NULL,
     FOREIGN KEY (seasonID) REFERENCES Seasons(seasonID)
     ON DELETE RESTRICT,
     FOREIGN KEY (resultID) REFERENCES Results(resultID)
@@ -62,7 +63,7 @@ INSERT INTO Players (firstName, lastName, country)
 VALUES ('Luann', 'Pascucci', 'Japan');
 
 INSERT INTO Players (firstName, lastName, rating)
-VALUES ('Alec', 'Andersen', 1);
+VALUES ('Alec', 'Andersen', 2156);
 
 INSERT INTO Players(firstName, lastName, birthday)
 VALUES ('Cookie', 'Monster', '1969-11-02');
