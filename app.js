@@ -265,7 +265,7 @@ app.post("/createOpening-ajax", function (req, res) {
 
 app.delete("/delete-opening-ajax/", function (req, res, next) {
   let data = req.body;
-  let ecoCode = parseInt(data.id);
+  let ecoCode = data.id;
   let deleteOpeningFromGames = `DELETE FROM Games Where ecoCode = ?`;
   let deleteOpening = `DELETE FROM Openings WHERE ecoCode = ?`;
 
