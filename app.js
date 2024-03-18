@@ -222,6 +222,35 @@ app.delete("/delete-season-ajax", function (req, res, next) {
   );
 });
 
+app.put("/put-season-ajax", function (req, res, next) {
+  let data = req.body;
+  let seasonID = parseInt(data.seasonID);
+  let updatedSeasonName = data.seasonName;
+
+  let queryUpdateSeasonName = `UPDATE Seasons SET seasonName = ? WHERE Seasons.seasonID = ?`;
+  let selectSeason = `SELECT * from Seasons WHERE seasonID = ?`;
+
+  db.pool.query(
+    queryUpdateSeasonName,
+    [updatedSeasonName, seasonID],
+    function (error, rows, fields) {
+      if (error) {
+        console.log(error);
+        res.sendStatus(400);
+      } else {
+        db.pool.query(selectSeason, [seasonID], function (error, rows, fields) {
+          if (error) {
+            console.log(error);
+            res.sendStatus(400);
+          } else {
+            res.send(rows);
+          }
+        });
+      }
+    }
+  );
+});
+
 app.post("/createOpening-ajax", function (req, res) {
   let data = req.body;
   query1 = `INSERT INTO Openings (ecoCode, varName) VALUES ('${data.ecoCode}', '${data.varName}')`;
