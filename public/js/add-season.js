@@ -63,6 +63,8 @@ addRowToTable = (data) => {
   row.appendChild(seasonNameCell);
   row.appendChild(deleteCell);
 
+  row.setAttribute("data-value", newRow.seasonID);
+
   //add the row to the table
   currentTable.appendChild(row);
 
@@ -71,6 +73,6 @@ addRowToTable = (data) => {
   let selectMenu = document.getElementById("mySelect");
   let option = document.createElement("option");
   option.text = newRow.seasonName;
-  option.value = newRow.id; //should this be seasonID?
-  selectMenu.add(opton);
+  option.value = newRow.seasonID; //should this be seasonID?
+  selectMenu.add(option);
 };
