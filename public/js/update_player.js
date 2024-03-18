@@ -58,11 +58,11 @@ function updateRow(data, playerID) {
       let td4 = updateRowIndex.getElementsByTagName("td")[4];
       let td5 = updateRowIndex.getElementsByTagName("td")[5];
 
-      td1.innerHTML = parsedData[0].name; //should be first name???
-      td2.innerHTML = parsedData[1].name;
-      td3.innerHTML = parsedData[2].name;
-      td4.innerHTML = parsedData[3].name;
-      td5.innerHTML = parsedData[4].name;
+      td1.innerHTML = parsedData[0].firstName; //should be first name???
+      td2.innerHTML = parsedData[1].lastName;
+      td3.innerHTML = parsedData[2].rating;
+      td4.innerHTML = parsedData[3].birthday;
+      td5.innerHTML = parsedData[4].country;
     }
   }
 }

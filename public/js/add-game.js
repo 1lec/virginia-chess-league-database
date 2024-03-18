@@ -2,33 +2,28 @@
 
 let addGameForm = document.getElementById("createGame-form-ajax");
 
-addPlayerForm.addEventListener("submit", function (e) {
+addGameForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  let inputWhiteFullName = document.getElementById("input-whiteFullName");
-  let inputBlackFullName = document.getElementById("input-blackFullName");
-  let inputGameResult = document.getElementById("input-gameResult");
-  let inputGameEcoCode = document.getElementById("input-gameEcoCode");
-  let inputGameDate = document.getElementById("input-gameDate");
-  let inputGameSeason = document.getElementById("input-gameSeason");
-  let inputGameLocation = document.getElementById("input-gameLocation");
-
-
-  let whiteNameValue = inputWhiteFullName.value;
-  let blackNameValue = inputBlackFullName.value;
-  let gameResultValue = inputGameResult.value;
-  let gameEcoCodeValue = inputGameEcoCode.value;
-  let gameDateValue = inputGameDate.value;
-  let gameSeasonValue = inputGameSeason.value;
-  let gameLocation = inputGameLocation.value;
+  let whiteNameValue = document.getElementById("input-whiteFullName").value;
+  let blackNameValue = document.getElementById("input-blackFullName").value;
+  let gameResultValue = document.getElementById("input-gameResult").value;
+  let gameEcoCodeValue = document.getElementById("input-gameEcoCode").value;
+  let gameDateValue = document.getElementById("input-gameDate").value;
+  let gameSeasonValue = document.getElementById("input-gameSeason").value;
+  let gameLocationValue = document.getElementById("input-gameLocation").value;
 
   let data = {
-    firstName: firstNameValue,
-    lastName: lastNameValue,
-    rating: ratingValue,
-    birthday: birthdayValue,
-    country: countryValue,
+    whiteName: whiteNameValue,
+    blackName: blackNameValue,
+    gameResult: gameResultValue,
+    gameEcoCode: gameEcoCodeValue,
+    gameDate: gameDateValue,
+    gameSeason: gameSeasonValue,
+    gameLocation: gameLocationValue,
   };
+
+  console.log(data);
 
   //setup AJAX request
   var xhttp = new XMLHttpRequest();
@@ -37,13 +32,12 @@ addPlayerForm.addEventListener("submit", function (e) {
 
   xhttp.onreadystatechange = () => {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-      addRowToTable(xhttp.response);
+        const games = xhttp.response
+        console.log(games);
+        addRowToTable(games);
 
-      inputFirstName.value = "";
-      inputLastName.value = "";
-      inputRating.value = "";
-      inputBirthday.value = "";
-      inputCountry.value = "";
+
+
     } else if (xhttp.readyState == 4 && xhttp.status != 200) {
       console.log("There was an error with the input.");
     }
@@ -82,10 +76,10 @@ addRowToTable = (data) => {
   countryCell.innerText = newRow.country;
 
   deleteCell = document.createElement("button");
-    deleteCell.innerHTML = "Delete";
-    deleteCell.onclick = function(){
-        deletePlayer(newRow.id);
-    };
+  deleteCell.innerHTML = "Delete";
+  deleteCell.onclick = function () {
+    deletePlayer(newRow.id);
+  };
 
   //append the cells to the row
   row.appendChild(playerIDCell);
@@ -103,8 +97,12 @@ addRowToTable = (data) => {
   // Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
   let selectMenu = document.getElementById("mySelect");
   let option = document.createElement("option");
-  option.text = newRow.firstName + newRow.lastName + newRow.rating + newRow.birthday + newRow.country;
+  option.text =
+    newRow.firstName +
+    newRow.lastName +
+    newRow.rating +
+    newRow.birthday +
+    newRow.country;
   option.value = newRow.id;
   selectMenu.add(opton);
-
 };
