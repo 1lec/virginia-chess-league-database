@@ -46,3 +46,25 @@
 
 {{!-- the below line embeds javascript to handle the DOM manipulation and AJAX request --}}
 <script src="./js/add-season.js"></script>
+
+
+<h2>Updating A Season Form</h2>
+<p>To update a season's name, please select the season from the dropdown box and enter the new season name in the text field.</p>
+<form id="update-season-form-ajax">
+
+    <label for="input-seasonName"> Season to update: </label>
+    <select name="input-seasonName" id="mySelect">
+        <option value="test">Select</option>
+        {{#each data}}
+        <option value="{{this.seasonID}}">{{this.seasonName}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-updatedSeasonName"> Corrected Season Name:</label>
+    <input type="text" name="input-updatedSeasonName" id="input-updatedSeasonName" required>
+
+    <input type="submit">
+
+</form>
+
+<script src="./js/update_season.js"></script>

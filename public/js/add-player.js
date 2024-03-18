@@ -77,10 +77,10 @@ addRowToTable = (data) => {
   countryCell.innerText = newRow.country;
 
   deleteCell = document.createElement("button");
-    deleteCell.innerHTML = "Delete";
-    deleteCell.onclick = function(){
-        deletePlayer(newRow.id);
-    };
+  deleteCell.innerHTML = "Delete";
+  deleteCell.onclick = function () {
+    deletePlayer(newRow.id);
+  };
 
   //append the cells to the row
   row.appendChild(playerIDCell);
@@ -98,8 +98,7 @@ addRowToTable = (data) => {
   // Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
   let selectMenu = document.getElementById("mySelect");
   let option = document.createElement("option");
-  option.text = newRow.firstName + newRow.lastName + newRow.rating + newRow.birthday + newRow.country;
-  option.value = newRow.id;
-  selectMenu.add(opton);
-
+  option.text = newRow.firstName + newRow.lastName; // + newRow.rating + newRow.birthday + newRow.country;
+  option.value = newRow.playerID;
+  selectMenu.add(option);
 };
