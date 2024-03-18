@@ -11,7 +11,8 @@ updateSeasonForm.addEventListener("submit", function (e) {
   let seasonIDValue = inputSeasonID.value;
   let updatedSeasonNameValue = inputUpdatedSeasonName.value;
 
-  if (isNaN(newSeasonNameValue)) {
+  console.log("Updated Season Name: ", updatedSeasonNameValue)
+  if (isNaN(updatedSeasonNameValue)) {
     return;
   }
 
