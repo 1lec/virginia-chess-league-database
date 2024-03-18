@@ -214,6 +214,9 @@ app.post("/createGame-ajax", function (req, res) {
   let data = req.body;
   console.log(data);
   const whiteID = parseInt(data.whiteName);
+  const blackID = parseInt(data.blackName);
+  const gameResultID = parseInt(data.gameResult);
+  const gameSeasonID = parseInt(data.gameSeason);
   console.log(whiteID);
 
   const query1 = `INSERT INTO Games (whiteID, whiteRating, blackID, blackRating, ecoCode, seasonID, resultID, gameDate, location) 
