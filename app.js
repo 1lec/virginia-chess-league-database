@@ -240,10 +240,10 @@ app.post("/createGame-ajax", function (req, res) {
   console.log(whiteID);
 
   const query1 = `INSERT INTO Games (whiteID, whiteRating, blackID, blackRating, ecoCode, seasonID, resultID, gameDate, location) 
-  VALUES ((SELECT playerID from Players WHERE playerID = ?), (SELECT rating FROM Players WHERE playerID = ?),
-  (SELECT playerID FROM Players WHERE playerID = ?), (SELECT rating FROM Players WHERE playerID = ?),
-  (SELECT ecoCode FROM Openings WHERE ecoCode = ?), (SELECT seasonID FROM Seasons WHERE seasonID = ?),
-  (SELECT resultID FROM Results WHERE resultID = ?), '${games.gameDate}', '${games.location})`;
+  VALUES ((SELECT playerID from Players WHERE playerID = '${whiteID}'), (SELECT rating FROM Players WHERE playerID = '${whiteID}'),
+  (SELECT playerID FROM Players WHERE playerID = '${blackID}'), (SELECT rating FROM Players WHERE playerID = '${blackID}'),
+  (SELECT ecoCode FROM Openings WHERE ecoCode = '${games.gameEcoCode}'), (SELECT seasonID FROM Seasons WHERE seasonID = '${gameSeasonID}'),
+  (SELECT resultID FROM Results WHERE resultID = '${gameResultID}'), '${games.gameDate}', '${games.location})`;
   const query2 = `SELECT * FROM Games;`;
 });
 app.post("/createSeason-ajax", function (req, res) {
