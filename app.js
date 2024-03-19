@@ -118,25 +118,21 @@ app.get("/results", function (req, res) {
   //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
 });
 
-app.get('/seasons', function(req, res)
-    {
-        res.render('seasons');
-    });
+app.get("/seasons", function (req, res) {
+  res.render("seasons");
+});
 
-app.get('/openings', function(req, res)
-    {
-        res.render('openings');
-    });
+app.get("/openings", function (req, res) {
+  res.render("openings");
+});
 
-app.get('/results', function(req, res)
-    {
-        res.render('results');
-    });
+app.get("/results", function (req, res) {
+  res.render("results");
+});
 
-app.get('/games', function(req, res)
-    {
-        res.render('games');
-    });
+app.get("/games", function (req, res) {
+  res.render("games");
+});
 
 //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
 
@@ -245,6 +241,22 @@ app.post("/createGame-ajax", function (req, res) {
   (SELECT ecoCode FROM Openings WHERE ecoCode = '${games.gameEcoCode}'), (SELECT seasonID FROM Seasons WHERE seasonID = '${gameSeasonID}'),
   (SELECT resultID FROM Results WHERE resultID = '${gameResultID}'), '${games.gameDate}', '${games.location})`;
   const query2 = `SELECT * FROM Games;`;
+
+  db.pool.query(query1, function (error, rows, fields) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      db.pool.query(query2, function (error, rows, fields) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.send(rows);
+        }
+      });
+    }
+  });
 });
 app.post("/createSeason-ajax", function (req, res) {
   let data = req.body;
