@@ -1,10 +1,11 @@
-// Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
+// Citation for overall form: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
 
 let addGameForm = document.getElementById("createGame-form-ajax");
 
 addGameForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
+//   Citation: help from TA during office hourse
   let whiteNameValue = document.getElementById("input-whiteFullName").value;
   let blackNameValue = document.getElementById("input-blackFullName").value;
   let gameResultValue = document.getElementById("input-gameResult").value;
@@ -24,6 +25,8 @@ addGameForm.addEventListener("submit", function (e) {
   };
 
   console.log(data);
+
+  //end of TA citation
 
   //setup AJAX request
   var xhttp = new XMLHttpRequest();
