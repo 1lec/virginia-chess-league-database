@@ -51,6 +51,7 @@ app.get("/seasons", function (req, res) {
 });
 
 app.get("/games", function (req, res) {
+  // Citation: assistance from TA
   let query1 = "SELECT * FROM Games;";
   let query2 = "SELECT * FROM Players;";
   let query3 = "SELECT * FROM Results;";
@@ -97,6 +98,7 @@ app.get("/games", function (req, res) {
       });
     });
   });
+  // end of assistance from TA
   //Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
 });
 
@@ -186,6 +188,7 @@ app.delete("/delete-player-ajax/", function (req, res, next) {
   });
 });
 
+// Citation for following function: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
 app.put("/put-player-ajax", function (req, res, next) {
   let data = req.body;
 
@@ -225,6 +228,7 @@ app.put("/put-player-ajax", function (req, res, next) {
   );
 });
 
+//Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
 app.post("/createGame-ajax", function (req, res) {
   let data = req.body;
   console.log(data);
@@ -258,6 +262,7 @@ app.post("/createGame-ajax", function (req, res) {
   });
 });
 
+//Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
 app.post("/createSeason-ajax", function (req, res) {
   let data = req.body;
   query1 = `INSERT INTO Seasons (seasonName) VALUES ('${data.seasonName}')`;
@@ -279,6 +284,7 @@ app.post("/createSeason-ajax", function (req, res) {
   });
 });
 
+//Citation https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data#create-a-delete-route
 app.delete("/delete-season-ajax", function (req, res, next) {
   let data = req.body;
   let seasonID = parseInt(data.id);
@@ -302,6 +308,7 @@ app.delete("/delete-season-ajax", function (req, res, next) {
   });
 });
 
+// Citation for following function: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
 app.put("/put-season-ajax", function (req, res, next) {
   let data = req.body;
   let seasonID = parseInt(data.seasonID);
@@ -331,6 +338,7 @@ app.put("/put-season-ajax", function (req, res, next) {
   );
 });
 
+//Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
 app.post("/createOpening-ajax", function (req, res) {
   let data = req.body;
   query1 = `INSERT INTO Openings (ecoCode, varName) VALUES ('${data.ecoCode}', '${data.varName}')`;
@@ -352,6 +360,7 @@ app.post("/createOpening-ajax", function (req, res) {
   });
 });
 
+//Citation https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data#create-a-delete-route
 app.delete("/delete-opening-ajax/", function (req, res, next) {
   let data = req.body;
   let ecoCode = data.id;
