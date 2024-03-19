@@ -28,7 +28,7 @@ updatePlayerForm.addEventListener("submit", function (e) {
     country: countryValue,
   };
 
-  var xhttp = newXMLHttpRequest();
+  var xhttp = new XMLHttpRequest();
   xhttp.open("PUT", "/put-player-ajax", true);
   xhttp.setRequestHeader("Content-type", "application/json");
 
