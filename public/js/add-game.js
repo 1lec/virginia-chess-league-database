@@ -72,26 +72,34 @@ addRowToTable = (data) => {
   let deleteCell = document.createElement("TD");
 
   // fill the row's cells with the data
-  playerIDCell.innerText = newRow.id;
-  firstNameCell.innerText = newRow.firstName;
-  lastNameCell.innerText = newRow.lastName;
-  ratingCell.innerText = newRow.rating;
-  birthdayCell.innerText = newRow.birthday;
-  countryCell.innerText = newRow.country;
+  gameIDCell.innerText = newRow.gameID;
+  whiteIDCell.innerText = newRow.whiteID;
+  whiteRatingCell.innerText = newRow.whiteRating;
+  blackIDCell.innerText = newRow.blackID;
+  blackRatingCell.innerText = newRow.blackRating;
+  ecoCodeCell.innerText = newRow.ecoCode;
+  seasonIDCell.innerText = newRow.seasonID;
+  resultIDCell.innerText = newRow.resultID;
+  gameDateCell.innerText = newRow.gameDate;
+  locationCell.innerText = newRow.location;
 
   deleteCell = document.createElement("button");
   deleteCell.innerHTML = "Delete";
   deleteCell.onclick = function () {
-    deletePlayer(newRow.id);
+    deleteGame(newRow.gameID);
   };
 
   //append the cells to the row
-  row.appendChild(playerIDCell);
-  row.appendChild(firstNameCell);
-  row.appendChild(lastNameCell);
-  row.appendChild(ratingCell);
-  row.appendChild(birthdayCell);
-  row.appendChild(countryCell);
+  row.appendChild(gameIDCell);
+  row.appendChild(whiteIDCell);
+  row.appendChild(whiteRatingCell);
+  row.appendChild(blackIDCell);
+  row.appendChild(blackRatingCell);
+  row.appendChild(ecoCodeCell);
+  row.appendChild(seasonIDCell);
+  row.appendChild(resultIDCell);
+  row.appendChild(gameDateCell);
+  row.appendChild(locationCell);
   row.appendChild(deleteCell);
 
   //add the row to the table
