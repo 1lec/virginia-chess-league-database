@@ -1,5 +1,5 @@
 -- CS 340
--- Project Step 3 Draft
+-- Project Step 6 Final
 -- Luann Pascucci, Alec Andersen
 
 SET FOREIGN_KEY_CHECKS=0;

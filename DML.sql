@@ -1,5 +1,5 @@
 -- CS 340
--- Project Step 3 Final
+-- Project Step 6 Final
 -- Luann Pascucci, Alec Andersen
 
 -- ! character will indicate form input
@@ -34,16 +34,16 @@ DELETE FROM Players WHERE playerID = !playerID;
 -- -----------------------------------------------------------------
 
 -- browse seasons
-SELECT seasonID, name AS Name
+SELECT seasonID, seasonName AS Name
 FROM Seasons;
 
 -- get seasonIDs and names for Season dropdown
-SELECT seasonID, name
+SELECT seasonID, seasonName
 FROM Seasons;
 
 -- create new season
-INSERT INTO Seasons (name)
-VALUES (!name);
+INSERT INTO Seasons (seasonName)
+VALUES (!seasonName);
 
 -- update/edit a season
 UPDATE Seasons SET name = !name
@@ -95,7 +95,7 @@ SELECT Games.gameID,
     Games.blackRating AS 'Black Rating',
     Results.description AS Result,
     Openings.varName AS Opening,
-    Seasons.name AS Season,
+    Seasons.seasonName AS Season,
     Games.gameDate AS Date,
     Games.location AS Location
 FROM Games
