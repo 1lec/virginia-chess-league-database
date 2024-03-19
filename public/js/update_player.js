@@ -5,22 +5,36 @@ let updatePlayerForm = document.getElementById("update-player-form-ajax");
 updatePlayerForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  let inputFullName = document.getElementById("mySelect");
-  let inputFirstName = document.getElementById("input-firstName");
-  let inputLastName = document.getElementById("input-lastName");
-  let inputRating = document.getElementById("input-rating");
-  let inputBirthday = document.getElementById("input-birthday");
-  let inputCountry = document.getElementById("input-country");
+  let inputplayerID = document.getElementById("select-playerID");
+  let inputFirstName = document.getElementById("input-updateFirstName");
+  let inputLastName = document.getElementById("input-updateLastName");
+  let inputRating = document.getElementById("input-updateRating");
+  let inputBirthday = document.getElementById("input-updateBirthday");
+  let inputCountry = document.getElementById("input-updateCountry");
 
-  let fullNameValue = inputFullName.value;
+  console.log("Full Name: ", inputplayerID)
+  console.log("Updated First Name: ", inputFirstName)
+  console.log("Updated Last Name: ", inputLastName)
+  console.log("Updated Rating: ", inputRating)
+  console.log("Updated Birthday: ", inputBirthday)
+  console.log("Updated Country: ", inputCountry)
+
+  let playerIDValue = inputplayerID.value;
   let firstNameValue = inputFirstName.value;
   let lastNameValue = inputLastName.value;
   let ratingValue = inputRating.value;
   let birthdayValue = inputBirthday.value;
   let countryValue = inputCountry.value;
 
+  console.log("Full Name: ", playerIDValue)
+  console.log("Updated First Name: ", firstNameValue)
+  console.log("Updated Last Name: ", lastNameValue)
+  console.log("Updated Rating: ", ratingValue)
+  console.log("Updated Birthday: ", birthdayValue)
+  console.log("Updated Country: ", countryValue)
+
   let data = {
-    fullname: fullNameValue,
+    playerID: playerIDValue,
     firstName: firstNameValue,
     lastName: lastNameValue,
     rating: ratingValue,
@@ -34,7 +48,7 @@ updatePlayerForm.addEventListener("submit", function (e) {
 
   xhttp.onreadystatechange = () => {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-      updateRow(xhttp.response, fullNameValue);
+      updateRow(xhttp.response, playerIDValue);
     } else if (xhttp.readyState == 4 && xhttp.status != 200) {
       console.log("There was an error with the input!");
     }

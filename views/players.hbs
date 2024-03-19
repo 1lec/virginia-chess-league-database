@@ -84,28 +84,28 @@
 <h2>Updating a Player's Information</h2>
 <p>To update a player, select their full name and enter the information to be updated.</p>
 <form id="update-player-form-ajax">
-    <label for="input-fullname">Full Name: </label>
-    <select name="input-fullname" id="mySelect">
+    <label for="select-playerID">Full Name: </label>
+    <select name="select-playerID" id="select-playerID">
         <option value="test">Select</option>
         {{#each data}}
         <option value="{{this.playerID}}">{{this.firstName}} {{this.lastName}}</option>
         {{/each}}
     </select>
 
-    <label for="input-firstName">First Name:</label>
-    <input type="text" name="input-firstName" id="input-firstName">
+    <label for="input-updateFirstName">First Name:</label>
+    <input type="text" name="input-updateFirstName" id="input-updateFirstName">
 
-    <label for="input-lastName">Last Name:</label>
-    <input type="text" name="input-lastName" id="input-lastName">
+    <label for="input-updateLastName">Last Name:</label>
+    <input type="text" name="input-updateLastName" id="input-updateLastName">
 
-    <label for="input-rating">Rating:</label>
-    <input type="number" name="input-rating" id="input-rating">
+    <label for="input-updateRating">Rating:</label>
+    <input type="number" name="input-updateRating" id="input-updateRating">
 
-    <label for="input-birthday">Birthday:</label>
-    <input type="date" name="input-birthday" id="input-birthday">
+    <label for="input-updateBirthday">Birthday:</label>
+    <input type="date" name="input-updateBirthday" id="input-updateBirthday">
 
-    <label for="input-country">Country:</label>
-    <input type="text" name="input-country" id="input-country">
+    <label for="input-updateCountry">Country:</label>
+    <input type="text" name="input-updateCountry" id="input-updateCountry">
 
     <input type="submit">
 </form>
