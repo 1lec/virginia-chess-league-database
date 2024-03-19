@@ -46,10 +46,10 @@ addGameForm.addEventListener("submit", function (e) {
   xhttp.send(JSON.stringify(data));
 });
 
-// creates a row from an object; representing one record from Players table
+// creates a row from an object; representing one record from Games table
 
 addRowToTable = (data) => {
-  let currentTable = document.getElementById("players-table");
+  let currentTable = document.getElementById("games-table");
 
   let newRowIndex = currentTable.rows.length;
 
@@ -58,12 +58,16 @@ addRowToTable = (data) => {
 
   //create a row
   let row = document.createElement("TR");
-  let playerIDCell = document.createElement("TD");
-  let firstNameCell = document.createElement("TD");
-  let lastNameCell = document.createElement("TD");
-  let ratingCell = document.createElement("TD");
-  let birthdayCell = document.createElement("TD");
-  let countryCell = document.createElement("TD");
+  let gameIDCell = document.createElement("TD");
+  let whiteIDCell = document.createElement("TD");
+  let whiteRatingCell = document.createElement("TD");
+  let blackIDCell = document.createElement("TD");
+  let blackRatingCell = document.createElement("TD");
+  let ecoCodeCell = document.createElement("TD");
+  let seasonIDCell = document.createElement("TD");
+  let resultIDCell = document.createElement("TD");
+  let gameDateCell = document.createElement("TD");
+  let locationCell = document.createElement("TD");
 
   let deleteCell = document.createElement("TD");
 
