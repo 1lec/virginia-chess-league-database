@@ -1,3 +1,5 @@
+// Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
+
 let addOpeningForm = document.getElementById("createOpening-form-ajax");
 
 addOpeningForm.addEventListener("submit", function (e) {
