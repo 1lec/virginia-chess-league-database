@@ -2,7 +2,17 @@
 {{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data --}}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-
+<h1>Chess Players Page</h1>
+<p>
+    Here are the current records of chess players in the Virginia Chess League Database. Before participating in a game,
+    a person must be added to this table.
+</p>
+<p>
+    To lookup a player by name, use the search function.
+</p>
+<p>
+    To update a player's information, such as any name changes, please use the update form.
+</p>
 {{!-- Create a table --}}
 {{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data --}}
 <h2>Players Table</h2>
@@ -43,7 +53,7 @@
 
 {{!-- Form to add a record to the table --}}
 {{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data --}}
-<h2>Adding Data with AJAX</h2>
+<h2>Add a New Player</h2>
 <p>To add a new player, please enter their information below and click 'Submit'</p>
 <form id="createPlayer-form-ajax">
     <label for="input-firstName">First Name:</label>
@@ -69,7 +79,7 @@
 
 {{!-- Search by name input functionality --}}
 {{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%206%20-%20Dynamically%20Filling%20Dropdowns%20and%20Adding%20a%20Search%20Box --}}
-<h2>Lookup using HTML</h2>
+<h2>Player Lookup</h2>
 <p>Enter the last name of the player:</p>
 <form id="lookup-player-html" method="GET" action="/">
     <label for="input-lastName">Search by Last Name: </label>
@@ -81,7 +91,7 @@
 
 {{!-- Update functionality --}}
 {{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data --}}
-<h2>Updating a Player's Information</h2>
+<h2>Update Player Information</h2>
 <p>To update a player, select their full name and enter the information to be updated.</p>
 <form id="update-player-form-ajax">
     <label for="input-fullname">Full Name: </label>

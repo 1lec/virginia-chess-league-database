@@ -258,6 +258,7 @@ app.post("/createGame-ajax", function (req, res) {
     }
   });
 });
+
 app.post("/createSeason-ajax", function (req, res) {
   let data = req.body;
   query1 = `INSERT INTO Seasons (seasonName) VALUES ('${data.seasonName}')`;
