@@ -12,9 +12,6 @@ updateSeasonForm.addEventListener("submit", function (e) {
   let updatedSeasonNameValue = inputUpdatedSeasonName.value;
 
   console.log("Updated Season Name: ", updatedSeasonNameValue)
-  if (isNaN(updatedSeasonNameValue)) {
-    return;
-  }
 
   let data = {
     seasonID: seasonIDValue,
@@ -22,7 +19,7 @@ updateSeasonForm.addEventListener("submit", function (e) {
   };
 
   var xhttp = new XMLHttpRequest();
-  xhttp.open("PUT", "put-season-ajax", true);
+  xhttp.open("PUT", "/put-season-ajax", true);
   xhttp.setRequestHeader("Content-type", "application/json");
 
   xhttp.onreadystatechange = () => {
